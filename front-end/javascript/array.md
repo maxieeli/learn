@@ -79,12 +79,12 @@ console.log(newNum); // => [2, 3, 4]
     + 如果没有设置初始值，默认采用数组的第一个元素作为初始值
 
 ```
-	const numArr = [3, 5, 8];
-	function summarize(accumaltor, number) {
-		return accumalator + number;
-	}
-	const sum = numArr.reduce(summarize, 0);
-	console.log(sum); // 16
+const numArr = [3, 5, 8];
+function summarize(accumaltor, number) {
+	return accumalator + number;
+}
+const sum = numArr.reduce(summarize, 0);
+console.log(sum); // 16
 ```
 
 
