@@ -11,7 +11,7 @@
 ```
 const strArr = ['one', 'two', 'three'];
 for(const str of strArr) {
-	console.log(str); // 'one', 'two', 'three'
+  console.log(str); // 'one', 'two', 'three'
 }
 ```
 
@@ -22,7 +22,7 @@ for(const str of strArr) {
 ```
 const strArr = ['one', 'two', 'three'];
 for(let i = 0; i < strArr.length; i++) {
-	console.log(strArr[i]); // 'one', 'two', 'three'
+  console.log(strArr[i]); // 'one', 'two', 'three'
 }
 ```
 
@@ -33,7 +33,7 @@ for(let i = 0; i < strArr.length; i++) {
 ```
 const strArr = ['one', 'two', 'three'];
 strArr.forEach(function(value, index) {
-	console.log(value, index);
+  console.log(value, index);
 });
 // 'one', 1
 // 'two', 2
@@ -51,7 +51,7 @@ strArr.forEach(function(value, index) {
 ```
 const numArr = [1, 2, 3];
 const newNum = numArr.map(function(n) {
-	return n + 1;
+  return n + 1;
 });
 console.log(newNum); // [2, 3, 4]
 ```
@@ -64,7 +64,7 @@ console.log(newNum); // [2, 3, 4]
 ```
 const numArr = [1, 2, 3];
 const newNum = Array.from(numArr, function(n){
-	return n + 1;
+  return n + 1;
 });
 console.log(newNum); // => [2, 3, 4]
 ```
@@ -81,7 +81,7 @@ console.log(newNum); // => [2, 3, 4]
 ```
 const numArr = [3, 5, 8];
 function summarize(accumaltor, number) {
-	return accumalator + number;
+  return accumalator + number;
 }
 const sum = numArr.reduce(summarize, 0);
 console.log(sum); // 16
@@ -180,7 +180,7 @@ numArr.includes(30); // false
 ```
 const numArr = [1, 2, 3, 4, 5];
 const resultArr = numArr.find(arr => {
-	return arr % 2 === 0
+  return arr % 2 === 0
 });
 console.log(resultArr); // 2
 ```
@@ -205,7 +205,7 @@ console.log(resultArr); // 1
 const firstArr = [0, 2, 4,6];
 const secondArr = [1, 2, 4, 6];
 function isEvery(num) {
-	return num % 2 === 0;
+  return num % 2 === 0;
 }
 firstArr.every(isEvery); // true
 secondArr.every(isEvery); // false
@@ -218,7 +218,7 @@ secondArr.every(isEvery); // false
 const firstArr = [1, 2, 7, 9];
 const secondArr = [1, 7, 9, 11];
 function isSome(num) {
-	return num % 2 === 0;
+  return num % 2 === 0;
 }
 firstArr.some(isSome); // true
 secondArr.some(isSome); // false
@@ -311,8 +311,8 @@ const strArr = ['one', 'two', 'three', 'four'];
 const fromIndex = 1;
 const removeCount = 2;
 const newArr = [
-	...strArr.slice(0, fromIndex),
-	...strArr.slice(fromIndex + removeCount)
+  ...strArr.slice(0, fromIndex),
+  ...strArr.slice(fromIndex + removeCount)
 ]
 console.log(newArr); // ['one', 'four']
 ```
@@ -364,7 +364,7 @@ console.log(resultArr); // [0, 0, 0]
 ```
 const length = 4;
 const emptyObjects = Array.from(Array(length), function() {
-	return {};
+  return {};
 });
 ```
 
@@ -418,10 +418,10 @@ numArr.sort(); // [2,3,5,6]
 
 ```
 function Accmulation(...arr) {
-	return arr.reduce((t, v) => t + v, 0);
+  return arr.reduce((t, v) => t + v, 0);
 }
 function Multiplication(...arr) {
-	return arr.reduce((t, v) => t * v, 0);
+  return arr.reduce((t, v) => t * v, 0);
 }
 Accmulation(1,2,3,4,5); // 15
 Multiplication(1,2,3,4,5); // 120
@@ -431,9 +431,9 @@ Multiplication(1,2,3,4,5); // 120
 
 ```
 const scores = {
-	{score: 90, sub: 'chinese', weight: 0.5},
-	{score: 95, sub: 'math', weight: 0.3},
-	{score: 85, sub: 'english', weight: 0.2}
+  {score: 90, sub: 'chinese', weight: 0.5},
+  {score: 95, sub: 'math', weight: 0.3},
+  {score: 85, sub: 'english', weight: 0.2}
 }
 const result = scores.reduce((t, v) => t + v.score * v.weight, 0);//[90.5]
 ```
@@ -442,7 +442,7 @@ const result = scores.reduce((t, v) => t + v.score * v.weight, 0);//[90.5]
 
 ```
 function Reverse(arr = []) {
-	return arr.reduceRight((t, v) => (t.push(v), t), []);
+  return arr.reduceRight((t, v) => (t.push(v), t), []);
 }
 Reverse([1, 2, 3, 4, 5]); // [5, 4, 3, 2, 1]
 ```
@@ -468,9 +468,9 @@ const b = arr.reduce((t, v) => v * 2 > 2 ? [...t, v * 2] : t, [])
 
 ```
 const scores = {
-	{score: 50, sub: 'chinese'},
-	{score: 65, sub: 'math'},
-	{score: 85, sub: 'english'}
+  {score: 50, sub: 'chinese'},
+  {score: 65, sub: 'math'},
+  {score: 85, sub: 'english'}
 };
 // 代替some，至少一门合格
 const isOneClass = scores.reduce((t, v) => t || v.score >= 60, false)
@@ -483,8 +483,7 @@ const isAllClass = scores.reduce((t, v) => t && v.scores >= 60, false)
 
 ```
 function Chunk(arr = [], size = 1) {
-	return arr.length ?
-		arr.reduce((t, v) => (t[t.length - 1].length === size ? t.push([v]) : t[t.length - 1].push(v), t), [[]]) : [];
+  return arr.length ? arr.reduce((t, v) => (t[t.length - 1].length === size ? t.push([v]) : t[t.length - 1].push(v), t), [[]]) : [];
 }
 const numArr = [1, 2, 3, 4, 5];
 Chunk(numArr, 2); // [[1, 2], [3, 4], [5]]
@@ -494,7 +493,7 @@ Chunk(numArr, 2); // [[1, 2], [3, 4], [5]]
 
 ```
 function Diff(nArr = [], oArr = []) {
-	return newArr.reduce((t, v) => (!oArr.includes(v) && t.push(v), t), []);
+  return newArr.reduce((t, v) => (!oArr.includes(v) && t.push(v), t), []);
 }
 
 const arr1 = [1,2,3,4,5];
@@ -506,12 +505,12 @@ Diff(arr1, arr2); // [1, 4, 5]
 
 ```
 function Fill(arr = [], val = '', start = 0, end = arr.length) {
-	if (start < 0 || start >= end || end > arr.length) return arr;
-	return [
-		...arr.slice(0, start),
-		...arr.slice(start, end).reduce((t, v) => (t.push(val || v), t), []),
-		...arr.slice(end, arr.length)
-	];
+  if (start < 0 || start >= end || end > arr.length) return arr;
+    return [
+      ...arr.slice(0, start),
+      ...arr.slice(start, end).reduce((t, v) => (t.push(val || v), t), []),
+      ...arr.slice(end, arr.length)
+    ];
 }
 const numArr = [0,1,2,3,4,5,6];
 Fill(arr, 'a', 2, 5); // [0, 1, 'a', 'a', 'a', 5, 6]
@@ -521,7 +520,7 @@ Fill(arr, 'a', 2, 5); // [0, 1, 'a', 'a', 'a', 5, 6]
 
 ```
 function Flat(arr = []) {
-	return arr.reduce((t, v) => t.concat(Array.isArray(v) ? Flat(v) : v), [])
+  return arr.reduce((t, v) => t.concat(Array.isArray(v) ? Flat(v) : v), [])
 }
 
 const numArr = [0, 1, [2, 3], [4, 5, [6, 7]], [8, [9, 10, [11, 12]]]];
@@ -532,7 +531,7 @@ Flat(numArr); // [0,1,2,3,4,5,6,7,8,9,10,11,12]
 
 ```
 function Uniq(arr = []) {
-	return arr.reduce((t, v) => t.includes(v) ? t : [...t, v], []);
+  return arr.reduce((t, v) => t.includes(v) ? t : [...t, v], []);
 }
 
 const numArr = [2, 1, 3, 2, 0, 6, 5, 3];
@@ -543,10 +542,10 @@ Uniq(numArr); // [2, 1, 3, 0, 6, 5]
 
 ```
 function Max(arr = []) {
-	return arr.reduce((t, v) => t > v ? t : v);
+  return arr.reduce((t, v) => t > v ? t : v);
 }
 function Min(arr = []) {
-	return arr.reduce((t, v) => t < v ? t : v);
+  return arr.reduce((t, v) => t < v ? t : v);
 }
 const numArr = [92, 4, 45, 72, 29, 17];
 Max(numArr); // 92
@@ -557,10 +556,9 @@ Min(numArr); // 4
 
 ```
 function Unzip(arr = []) {
-	return arr.reduce(
-		(t, v) => (v.forEach(w, i) => t[i].push(w), t),
-		Array.from({ length: Math.max(...arr.map(v => v.length)) }).map(v => [])
-	);
+  return arr.reduce(
+    (t, v) => (v.forEach(w, i) => t[i].push(w), t),Array.from({ length: Math.max(...arr.map(v => v.length)) }).map(v => [])
+  );
 }
 const strArr = [["a", 1, true], ["b", 2, false]];
 Unzip(strArr); // [["a", "b"], [1, 2], [true, false]]
@@ -570,7 +568,7 @@ Unzip(strArr); // [["a", "b"], [1, 2], [true, false]]
 
 ```
 function Count(arr = []) {
-	return arr.reduce((t, v) => (t[v] = (t[v] || 0) + 1， t), {});
+  return arr.reduce((t, v) => (t[v] = (t[v] || 0) + 1， t), {});
 }
 const numArr = [0, 1, 1, 2, 2, 2];
 Count(numArr); // { 0: 1, 1: 2, 2: 3 }
@@ -580,7 +578,7 @@ Count(numArr); // { 0: 1, 1: 2, 2: 3 }
 
 ```
 function Position(arr = [], val) {
-	return arr.reduce((t, v, i) => (v === val && t.push(i), t), []);
+  return arr.reduce((t, v, i) => (v === val && t.push(i), t), []);
 }
 const numArr = [2, 1, 5, 4, 2, 1, 6, 6, 7];
 Position(numArr, 2); // [0, 4]
@@ -590,7 +588,7 @@ Position(numArr, 2); // [0, 4]
 
 ```
 function ReverseStr(str = '') {
-	return str.split('').reduceRight((t, v) => t + v);
+  return str.split('').reduceRight((t, v) => t + v);
 }
 const str = 'reduce';
 ReverseStr(str); // 'ecuder'
