@@ -13,10 +13,14 @@ const： 一般声明常量，因为声明后必须赋值
 let：声明变量
 
 <blockquote>作用范围</blockquote>
+
+
 + var命令在全局代码中执行
 + let / const 只能在代码块中执行
 
 <blockquote>使用注意</blockquote>
+
+
 + 不允许重复声明
 + 未定义就使用会报错，const 、let不存在变量提升
 + 暂时性死区：在代码块内使用 let 声明变量之前，该变量都不可用
@@ -51,6 +55,8 @@ let：声明变量
 
 
 <blockquote>应用</blockquote>
+
+
 + 交换变量值： `[x, y] = [y, x]`
 + 返回函数多个值: `const [x, y, z] = Func()`
 + 定义函数参数: `Func([1, 2])`
@@ -60,6 +66,8 @@ let：声明变量
 + 输入模块指定属性和方法: `const {readFile, writeFile} = require('fs')`
 
 <blockquote>注意</blockquote>
+
+
 + 匹配模式：只要等号两边的模式相同，左边的变量就会被赋予对应的值
 + 解构赋值规则：只要等号右边的值不是对象或数组，就先将其转成对象
 + 解构默认值生效条件：属性值严格等于undefined
@@ -119,6 +127,8 @@ let：声明变量
 
 
 <blockquote>属性遍历</blockquote>
+
+
 + 描述：可继承，非枚举，Symbol
 + 遍历
     + for-in: 遍历对象 自身可继承可枚举属性
@@ -151,6 +161,8 @@ let：声明变量
 
 
 <blockquote>应用</blockquote>
+
+
 + 克隆数组：`const arr = [...arr]`
 + 合并数组：`const arr = [...arr1, ...arr2]`
 + 拼接数组：`arr.push(...arr1)`
@@ -192,6 +204,8 @@ let：声明变量
 
 
 <blockquote>注意事项</blockquote>
+
+
 + 函数体内的this是定义时所在的对象而不是使用时所在的对象
 + 可让this指向固定化，这种特性很有利于封装回调函数
 + 不可当做构造函数，因此箭头函数不可使用new
@@ -220,6 +234,8 @@ let：声明变量
 
 
 <blockquote>数据类型</blockquote>
+
+
 + <strong>Undefined</strong>
 + <strong>Null</strong>
 + <strong>String</strong>
@@ -229,6 +245,8 @@ let：声明变量
 + <strong>Symbol</strong>
 
 <blockquote>应用</blockquote>
+
+
 + 唯一化对象属性名：属性名属于Symbol类型，就都是独一无二的，可保证不会与其他属性名产生冲突
 + 遍历属性名：只能通过Object.getOwnPropertySymbols() 返回
 + 启动模块的Singleton模式：调用一个类在任何时候返回同一个实例
@@ -262,6 +280,8 @@ let：声明变量
     + <strong>forEach()</strong>：使用回调函数遍历每个成员
 
 <blockquote>应用</blockquote>
+
+
 + 去重字符串：`[...new Set(str)].join('')`
 + 去重数组：`[...new Set(arr)] / Array.from(new Set(str))`
 + 集合数组：
@@ -274,6 +294,8 @@ let：声明变量
     + 映射：`set = new Set([...set].map(v => v + 2))`
 
 <blockquote>重点</blockquote>
+
+
 + 遍历顺序：插入顺序
 + 没有键只有值，可认为键和值相等
 + 添加多个NaN时，只会存在一个NaN
@@ -295,10 +317,14 @@ let：声明变量
     + <strong>has()</strong>：检查值，返回布尔值
 
 <blockquote>应用</blockquote>
+
+
 + 存储DOM节点：DOM节点被移除时自动释放此成员，不用担心这些节点从文档移除时会引发内存泄漏
 + 临时存放一组对象或存放跟对象绑定的信息：只要这些对象在外部消失，它在WeakSet结构中的引用就会自动消失
 
 <blockquote>重点</blockquote>
+
+
 + 成员都是弱引用，垃圾回收机制不考虑WeakSet结构对此成员的引用
 + 成员不适合引用，它会随时消失，因此ES6规定WeakSet结构不可遍历
 + 其他对象不再引用成员时，垃圾回收机制会自动回收此成员所占用的内存，不考虑此成员是否还存在于WeakSet结构中
@@ -325,6 +351,8 @@ let：声明变量
     + <strong>forEach()</strong>：使用回调函数遍历每个成员
 
 <blockquote>重点</blockquote>
+
+
 + 遍历顺序：插入顺序
 + 对同一个键多次赋值：后面的值覆盖前面的值
 + 对同一个对象的引用：被视为一个键
@@ -350,10 +378,14 @@ let：声明变量
 
 
 <blockquote>应用</blockquote>
+
+
 + 存储DOM节点：DOM节点被移除时自动释放此成员键，不用担心这些节点从文档移除时会引发内存泄漏
 + 部署私有属性：内部属性是实例的弱引用，删除实例时它们也会随之消失，不会造成内存泄漏
 
 <blockquote>重点</blockquote>
+
+
 + 成员键都是弱引用，垃圾回收机制不考虑WeakMapt结构对此成员键的引用
 + 成员键不适合引用，它会随时消失，因此ES6规定WeakMap结构不可遍历
 + 其他对象不再引用成员键时，垃圾回收机制会自动回收此成员所占用的内存，不考虑此成员是否还存在于WeakMap结构中
@@ -389,6 +421,8 @@ let：声明变量
 
 
 <blockquote>应用</blockquote>
+
+
 + Proxy.revocable()：不允许直接访问对象，必须通过代理访问，一旦访问结束就收回代理权，不允许再次访问
 + get()：读取位置属性报错，读取数组负数索引的值，封装链式操作，生成DOM嵌套节点
 + set()：数据绑定，确保属性值设置符合要求，防止内部属性被外部读写
@@ -398,6 +432,8 @@ let：声明变量
 + ownKeys()：保护内部属性不被遍历
 
 <blockquote>重点</blockquote>
+
+
 + 要使Proxy起作用，必须针对实例进行操作，而不是针对目标对象进行操作
 + 没有设置任何拦截时，等于直接通向原对象
 + 属性被定义为 不可读写 /扩展/配置/枚举，使用拦截方法会报错
@@ -461,6 +497,8 @@ let：声明变量
 
 
 <blockquote>原生构造函数</blockquote>
+
+
 + String()
 + Number()
 + Boolean()
@@ -472,6 +510,8 @@ let：声明变量
 + Error()
 
 <blockquote>重点</blockquote>
+
+
 + 在实例上调用方法，实质是调用原型上的方法
 + `Object.assign()`可方便地一次向类添加多个方法(`Object.assign(Class.prototype, {...})`)
 + 类内部所有定义的方法是不可枚举的(non-enumerable)
@@ -484,6 +524,8 @@ let：声明变量
 
 
 <blockquote>私有属性方法</blockquote>
+
+
 ```
 const name = Symbol('name');
 const print = Symbol('print');
@@ -529,6 +571,8 @@ class Person {
 
 
 <blockquote>加载方式</blockquote>
+
+
 + 运行时加载
     + 定义：整体加载模块生成一个对象，再从对象上获取需要的属性和方法进行加载(全部)
     + 影响：只有运行时才能得到是这个对象，导致无法在编译时做静态优化
@@ -537,6 +581,8 @@ class Person {
     + 影响：在编译时就完成模块加载，效率比其他方案高，但无法引用模块本身(本身不是对象)
 
 <blockquote>加载实现</blockquote>
+
+
 + 传统加载：通过 <script>进行 同步/异步 加载脚本
 
   + 同步加载：`<script src=""></script>`
@@ -546,6 +592,8 @@ class Person {
 + 模块加载：`<script type='module' src=''></script>`(默认是Defer异步加载)
 
 <blockquote>重点</blockquote>
+
+
 + ES6模块中，顶层this指向undefined，不应该在顶层代码使用this
 + 一个模块就是一个独立的文件，该文件内部的所有变量，外部无法获取
 + export命令输出的接口与其对应的值是动态绑定关系，即通过该接口可获取模块内部实时的值
@@ -585,6 +633,8 @@ class Person {
 
 
 <blockquote>for-of循环</blockquote>
+
+
 + 定义：调用 Iterator 接口产生遍历器对象
 + 遍历字符串：for-in获取索引，for-of获取值
 + 遍历数组：for-in 获取索引，for-of获取值
@@ -602,6 +652,8 @@ class Person {
     + 提供遍历所有数据结构的统一操作接口
 
 <blockquote>应用</blockquote>
+
+
 + 改写具有Iterator接口的数据结构的Symbol.iterator
 + 解构赋值：对Set进行解构
 + 扩展运算符： 将部署Iterator接口的数据结构转为数组
@@ -636,10 +688,14 @@ class Person {
 
 
 <blockquote>应用</blockquote>
+
+
 + 加载图片
 + Ajax转Promise对象
 
 <blockquote>重点</blockquote>
+
+
 + 只有异步操作的结果可决定当前状态是哪一种，其他操作都无法改变这个状态
 + 状态改变只有两种可能：从pending到resolved，从pending到rejected
 + 一旦新建Promise对象就会立即执行，无法中途取消
@@ -680,12 +736,16 @@ class Person {
 
 
 <blockquote>应用</blockquote>
+
+
 + 异步操作下的同步表达
 + 控制流管理
 + 为对象部署Iterator接口：把Generator函数赋值给对象的Symbol.iterator，从而使该对象具有Iterator接口
 + 作为具有Iterator接口的数据结构
 
 <blockquote>重点</blockquote>
+
+
 + 每次调用next()，指针就从 函数头部 或 上次停下的位置开始执行，直到遇到下一个yield命令或return语句为止
 + 函数内部可不用yield命令，但会变成单纯的暂缓执行函数
 + yield命令是暂停执行的标记，next是恢复执行的操作
@@ -698,6 +758,8 @@ class Person {
 + throw() 被捕获以后，会附带执行下一条yield命令
 
 <blockquote>首次next()可传值</blockquote>
+
+
 ```
 function Func(func) {
   return function(...args){
@@ -759,6 +821,8 @@ console().next('welcome');
 + 错误处理： 将 await 的Promise对象放到try-catch中
 
 <blockquote>重点</blockquote>
+
+
 + Async函数返回Promise对象，可使用then() 添加回调函数
 + 内部 return返回值 会成为后续then() 的出参
 + 内部抛出错误会导致返回的Pronmise对象变为rejected状态，被catch()捕获
@@ -778,6 +842,8 @@ console().next('welcome');
 + 扩展运算符(...)：转换对象为用逗号分隔的参数序列
 
 <blockquote>扩展</blockquote>
+
+
 + 克隆对象：`const obj = { __proto__ : Object.getPrototypeOf(obj1), ...obj1}`
 + 合并对象：`const obj = {...obj1, ...obj2}`
 + 修改现有对象部分属性：`const obj = {x: 1, ...{x: 2}}`
