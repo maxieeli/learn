@@ -26,8 +26,11 @@ let：声明变量
 ### 解构赋值
 
 <strong>字符串解构：</strong> `const [a, b, c, d, e] = "hello"`
+
 <strong>数值解构：</strong> `const {toString: s} = 123`
+
 <strong>布尔解构：</strong> `const {toString: b} = true`
+
 <strong>对象解构：</strong>
 
 + 形式: `const {x, y} = {x: 1, y: 2}`
@@ -536,10 +539,10 @@ class Person {
 <blockquote>加载实现</blockquote>
 + 传统加载：通过 <script>进行 同步/异步 加载脚本
 
-    + 同步加载：`<script src=""></script>`
-    + Defer异步加载：`<script src='defer'></script>`(顺序加载 ，渲染完再执行)
-    + Async异步加载：`<script src='async'></script>`(乱序加载，下载完就执行)
-   
+  + 同步加载：`<script src=""></script>`
+  + Defer异步加载：`<script src='defer'></script>`(顺序加载 ，渲染完再执行)
+  + Async异步加载：`<script src='async'></script>`(乱序加载，下载完就执行)
+  
 + 模块加载：`<script type='module' src=''></script>`(默认是Defer异步加载)
 
 <blockquote>重点</blockquote>
