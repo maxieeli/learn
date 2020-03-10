@@ -17,7 +17,7 @@
 该内容分为两个文章解析，分别讲述以下内容：
 
 + 第一章，讲述渲染函数组件过程中对hooks API的使用(本文)
-+ 第二章，将ReactElement变成fiber对象并更新的过程中对节点类型的实现(详情)
++ 第二章，将ReactElement变成fiber对象并更新的过程中对节点类型的实现([详情](https://github.com/owenCoderLi/learn/blob/master/front-end/react/FunctionComponentSecond.md))
 
 
 
