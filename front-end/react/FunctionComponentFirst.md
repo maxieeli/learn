@@ -16,8 +16,8 @@
 
 该内容分为两个文章解析，分别讲述以下内容：
 
-+ 第一篇章，讲述渲染函数组件过程中对hooks API的使用(本文)
-+ 第二篇章，将ReactElement变成fiber对象并更新的过程中对节点类型的实现  --  (详情)
++ 第一章，讲述渲染函数组件过程中对hooks API的使用(本文)
++ 第二章，将ReactElement变成fiber对象并更新的过程中对节点类型的实现(详情)
 
 
 
@@ -93,7 +93,7 @@ function updateFunctionComponent(
       renderExpirationTime
     );
   }
-  
+
   // 表明当前组件在渲染的过程中有被更新到
   workInProgress.effectTag |= PerformedWork;
   

@@ -112,11 +112,13 @@ function scheduleUpdateOnFiber(fiber, expirationTime) {
 
 ### checkForNestedUpdates()
 
-```
-// 作用: 判断是否是无限循环的 update
-// 超过50成嵌套update，就终止进行调度，并报error
-// 造成死循环的原因: 在render()中无条件的使用 setState
+作用：
 
++ 判断是否是无限循环的 update
++ 超过50成嵌套update，就终止进行调度，并报error
++ 造成死循环的原因: 在render()中无条件的使用 setState
+
+```
 const NESTED_UPDATE_LIMIT = 50;
 let nestedUpdateCount: number = 0;
 
@@ -135,9 +137,9 @@ function checkForNestedUpdates() {
 
 ### markUpdateTimeFromFiberToRoot()
 
-```
-// 作用: 找到rootFiber并遍历更新子节点的expirationTime
+作用：找到rootFiber并遍历更新子节点的expirationTime
 
+```
 // 目标fiber会向上寻找 rootFiber对象，在寻找的过程中会进行一些操作
 function markUpdateTimeFromFiberToRoot(fiber, expirationTime) {
 
@@ -206,9 +208,9 @@ function markUpdateTimeFromFiberToRoot(fiber, expirationTime) {
 
 ### checkForInterruption()
 
-```
-// 作用: 判断是否有高优先级任务打断当前正在执行的任务
+作用：判断是否有高优先级任务打断当前正在执行的任务
 
+```
 function checkForInterruption(
   fiberThatReceivedUpdate,
   updateExpirationTime
@@ -226,11 +228,11 @@ function checkForInterruption(
 
 ### getCurrentPriorityLevel()
 
-```
-// 作用: 获取当前调度任务的优先级
+作用：获取当前调度任务的优先级
 
-//除了90，用数字是因为这样做，方便比较
-//从90开始的原因是防止和Scheduler的优先级冲突
+```
+// 除了90，用数字是因为这样做，方便比较
+// 从90开始的原因是防止和Scheduler的优先级冲突
 export const ImmediatePriority: ReactPriorityLevel = 99;
 export const UserBlockingPriority: ReactPriorityLevel = 98;
 export const NormalPriority: ReactPriorityLevel = 97;
@@ -275,8 +277,9 @@ function scheduleUpdateOnFiber(fiber, expirationTime) {
 
 ### ensureRootIsScheduled()
 
+描述：每一个root都有一个唯一的调度任务,如果已经存在，我们要确保到期时间与下一级别任务的相同，每一次更新都会调用这方法
+
 ```
-// 每一个root都有一个唯一的调度任务，如果已经存在，我们要确保到期时间与下一级别任务的相同，每一次更新都会调用这方法
 function ensureRootIsScheduled(root) {
   var lastExpiredTime = root.lastExpiredTime;
 
@@ -294,7 +297,6 @@ function ensureRootIsScheduled(root) {
 
   // 说明接下来没有可调度的任务
   if (expirationTime === NoWork) {
-    // There's nothing to work on.
     if (existingCallbackNode !== null) {
       root.callbackNode = null;
       root.callbackExpirationTime = NoWork;
@@ -310,7 +312,8 @@ function ensureRootIsScheduled(root) {
     expirationTime
   ); 
 
-  // 如果存在一个渲染任务，必须有相同的到期时间，确认优先级如果当前任务的优先级高就取消之前的任务安排一个新的任务
+  // 如果存在一个渲染任务，必须有相同的到期时间
+  // 确认优先级如果当前任务的优先级高就取消之前的任务安排一个新的任务
   if (existingCallbackNode !== null) {
     var existingCallbackPriority = root.callbackPriority;
     var existingCallbackExpirationTime = root.callbackExpirationTime;
@@ -322,6 +325,7 @@ function ensureRootIsScheduled(root) {
     }
     cancelCallback(existingCallbackNode);
   }
+
   // 取消了之前的任务需要重置为当前最新的
   root.callbackExpirationTime = expirationTime;
   root.callbackPriority = priorityLevel;
@@ -344,10 +348,12 @@ function ensureRootIsScheduled(root) {
 
 ### scheduleSyncCallback()
 
-```
-// 同步任务调度的中间方法，如果队列不为空就加入队列，如果为空就立即推入任务调度队列
-// 将同步任务推入同步队列 syncQueue，等待 flushSyncCallbackQueue调用将所有同步任务推入真正的任务队列，如果第一次的同步任务会直接加入调度队列
+描述：
 
++ 同步任务调度的中间方法，如果队列不为空就加入队列，如果为空就立即推入任务调度队列
++ 将同步任务推入同步队列 syncQueue，等待 flushSyncCallbackQueue调用将所有同步任务推入真正的任务队列，如果第一次的同步任务会直接加入调度队列
+
+```
 function scheduleSyncCallback(callback) {
   if (syncQueue === null) {
     syncQueue = [callback]; 
@@ -364,8 +370,9 @@ function scheduleSyncCallback(callback) {
 
 ### scheduleCallback()
 
+作用：异步任务调度，直接将异步任务推入调度队列
+
 ```
-// 异步任务调度，直接将异步任务推入调度队列
 function scheduleCallback(reactPriorityLevel, callback, options) {
   var priorityLevel = reactPriorityToSchedulerPriority(
     reactPriorityLevel
@@ -397,10 +404,11 @@ function unstable_scheduleCallback(priorityLevel, callback, options) {
       startTime = currentTime;
     }
     // 如果没有timeout就是使用优先级计算出来的
-    timeout = typeof options.timeout === 'number' ? 
-      options.timeout : 
-      timeoutForPriorityLevel(priorityLevel);
+    timeout = typeof options.timeout === 'number'
+      ? options.timeout
+      : timeoutForPriorityLevel(priorityLevel);
   } else {
+  
     // 针对不同的优先级计算出不同的过期时间
     timeout = timeoutForPriorityLevel(priorityLevel);
     startTime = currentTime;
@@ -457,12 +465,13 @@ function unstable_scheduleCallback(priorityLevel, callback, options) {
 }
 ```
 
-异步的方法会传入一个timeout参数可以直接使用。如果没有回根据优先级计算出一个固定的值，对于每一个任务都会定义成一个新的任务task，<strong>任务队列实际是一个基于数组实现的最小推，排序的key就是新计算出来的expirationTime</strong> 所以这里可以看到不管同步还是异步任务最终都是推入了一个任务队列中等待执行。最后执行`requestHostCallback`就是用MessageChannel的异步方法来开启任务调度`performWorkUntilDeadline`
+异步的方法会传入一个timeout参数可以直接使用。如果没有回根据优先级计算出一个固定的值，对于每一个任务都会定义成一个新的任务task，<strong>任务队列实际是一个基于数组实现的最小推，排序的key就是新计算出来的expirationTime</strong> 所以这里可以看到不管同步还是异步任务最终都是推入了一个任务队列中等待执行。最后执行`requestHostCallback`就是用`MessageChannel`的异步方法来开启任务调度`performWorkUntilDeadline`
 
 ### performWorkUntilDeadline()
 
+作用： 执行工作直到超时
+
 ```
-// 执行工作直到超时
 var performWorkUntilDeadline = function () {
   // 可能有被取消的情况
   if (scheduledHostCallback !== null) {
@@ -534,17 +543,11 @@ function workLoop(hasTimeRemaining, initialTime) {
         currentTask.callback = continuationCallback;
         markTaskYield(currentTask, currentTime);
       } else {
-        {
-          markTaskCompleted(currentTask, currentTime);
-          currentTask.isQueued = false;
-        }
-
         // 如果当前任务是最高优先级的直接推出
         if (currentTask === peek(taskQueue)) {
           pop(taskQueue);
         }
       }
-
       advanceTimers(currentTime);
     } else {
       pop(taskQueue);

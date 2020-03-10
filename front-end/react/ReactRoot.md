@@ -48,7 +48,10 @@ if (config != null) {
   self = config.__self === undefined ? null : config.__self;
   source = config.__source === undefined ? null : config.__source;
   for (propName in config) {
-    if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+    if (
+      hasOwnProperty.call(config, propName) &&
+      !RESERVED_PROPS.hasOwnProperty(propName)
+    ) {
       props[propName] = config[propName];
     }
   }
@@ -120,7 +123,12 @@ function Component(props, context, updater) {
 }
 Component.prototype.isReactComponent = {};
 Component.prototype.setState = function (partialState, callback) {
-  this.updater.enqueueSetState(this, partialState, callback,'setState');
+  this.updater.enqueueSetState(
+    this,
+    partialState,
+    callback,
+    'setState'
+  );
 };
 Component.prototype.forceUpdate = function (callback) {
   this.updater.enqueueForceUpdate(this, callback, 'forceUpdate');
@@ -142,9 +150,14 @@ function PureComponent(props, context, updater) {
   this.refs = emptyObject;
   this.updater = updater || ReactNoopUpdateQueue;
 }
-var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
+var pureComponentPrototype
+  = PureComponent.prototype
+  = new ComponentDummy();
 pureComponentPrototype.constructor = PureComponent;
-_assign(pureComponentPrototype, Component.prototype); // assign -> Object.assign()
+_assign(
+  pureComponentPrototype,
+  Component.prototype
+); // assign -> Object.assign()
 pureComponentPrototype.isPureReactComponent = true;
 ```
 
@@ -241,13 +254,28 @@ function mapChildren(children, func, context) {
   return result;
 }
 
-function mapIntoWithKeyPrefixInternal(children, array, prefix, func, context) {
+function mapIntoWithKeyPrefixInternal(
+  children,
+  array,
+  prefix,
+  func,
+  context
+) {
   var escapedPrefix = '';
   if (prefix != null) {
     escapedPrefix = escapeUserProvidedKey(prefix) + '/';
   }
-  var traverseContext = getPooledTraverseContext(array, escapedPrefix, func, context);
-  traverseAllChildren(children, mapSingleChildIntoContext, traverseContext);
+  var traverseContext = getPooledTraverseContext(
+    array,
+    escapedPrefix,
+    func,
+    context
+  );
+  traverseAllChildren(
+    children,
+    mapSingleChildIntoContext,
+    traverseContext
+  );
   releaseTraverseContext(traverseContext);
 }
 ```
@@ -286,7 +314,9 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
     callback(
       traverseContext,
       children,
-      nameSoFar === '' ? SEPARATOR + getComponentKey(children, 0) : nameSoFar
+      nameSoFar === ''
+        ? SEPARATOR + getComponentKey(children, 0)
+        : nameSoFar
     );
     return 1;
   }
@@ -296,7 +326,12 @@ function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext)
 这部分代码主要是在判断 children 的类型是什么，如果是可以渲染的节点的话，就直接调用 callback， 另外还可以发现在判断的过程中，代码中有使用到 `$$typeof` 去判断的流程。这里的 callback 指的是 `mapSingleChildIntoContext` 函数。这部分会在下面讲述到。
 
 ```
-function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
+function traverseAllChildrenImpl(
+  children,
+  nameSoFar,
+  callback,
+  traverseContext
+) {
   // ...
   if (Array.isArray(children)) {
     for (var i = 0; i < children.length; i++) {
@@ -367,7 +402,7 @@ bookingKeeping 就是从对象池子里面取出来的东西，然后调用func�
 
 
 
-以上就是关于 React 的部分API进行了描述与源码阅读。
+以上就是关于 React 的部分API进行了描述与解析。
 
 
 

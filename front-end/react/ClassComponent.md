@@ -29,7 +29,7 @@
 function beginWork(current, workInProgress, renderExpirationTime) {
   // ...省略部分代码
   switch (workInProgress.tag) {
-	case ClassComponent: {
+    case ClassComponent: {
       var _Component2 = workInProgress.type;
       var _unresolvedProps = workInProgress.pendingProps;
       var _resolvedProps = workInProgress.elementType === _Component2 
@@ -77,7 +77,7 @@ function updateClassComponent(
   // FunctionComponent没有实例，所有stateNode为null
   var instance = workInProgress.stateNode;
   var shouldUpdate;
- 
+
   // 当未创建实例时
   if (instance === null) {
 
@@ -156,10 +156,11 @@ function constructClassInstance(workInProgress, ctor, props) {
 
 ### adoptClassInstance()
 
-作用：初始化 class 实例, 即初始化 workInProgress和instance
-(1). 将classComponent初始化的时候那倒的update对象赋值给instance.updater
-(2). 将新的ClassComponent实例赋值给workInProgress.stateNode
-(3). 执行set方法，将workInProgress赋值给`instance._reactInternalFiber`，这样就能通过 instance 即 this 找到了 workInProgress
+作用：初始化 class 实例, 即初始化 workInProgress和instance.
+
++ 将classComponent初始化的时候那倒的update对象赋值给instance.updater
++ 将新的ClassComponent实例赋值给workInProgress.stateNode
++ 执行set方法，将workInProgress赋值给`instance._reactInternalFiber`，这样就能通过 instance 即 this 找到了 workInProgress
 
 ```
 function adoptClassInstance(workInProgress, instance) {
@@ -335,6 +336,7 @@ function resumeMountClassInstance(
   // ...
 
   var getDerivedStateFromProps = ctor.getDerivedStateFromProps;
+
   // 从开发角度上看,只要有getDerivedStateFromProps或getSnapshotBeforeUpdate 
   // 其中一个生命周期API,变量hasNewLifecycles为true
   var hasNewLifecycles =
@@ -385,8 +387,8 @@ function resumeMountClassInstance(
     return false;
   }
 
-  //有调用getDerivedStateFromProps()的话，则执行对应的applyDerivedStateFromProps
-  //这边能执行，说明componentWillReceiveProps()就不执行
+  // 有调用getDerivedStateFromProps()的话，则执行对应的applyDerivedStateFromProps
+  // 这边能执行，说明componentWillReceiveProps()就不执行
   if (typeof getDerivedStateFromProps === 'function') {
     applyDerivedStateFromProps(
       workInProgress,
@@ -462,6 +464,7 @@ function checkShouldComponentUpdate(
   nextContext
 ) {
   var instance = workInProgress.stateNode;
+
   // 如果有调用 shouldComponentUpdate的话，则返回执行该方法的结果
   if (typeof instance.shouldComponentUpdate === 'function') {
     startPhaseTimer(workInProgress, 'shouldComponentUpdate');
@@ -473,6 +476,7 @@ function checkShouldComponentUpdate(
     stopPhaseTimer();
     return shouldUpdate;
   }
+
   // 如果是纯组件的话,就用浅比较来比较props/state
   if (ctor.prototype && ctor.prototype.isPureReactComponent) {
     return
@@ -553,6 +557,7 @@ function updateClassInstance(
     !hasContextChanged() &&
     !checkHasForceUpdateAfterProcessing()
   ) {
+
     //这里与resumeMountClassInstance不一样
     // updateClassInstance：componentDidUpdate/getSnapshotBeforeUpdate
     // resumeMountClassInstance(): componentDidMount
@@ -592,9 +597,13 @@ function updateClassInstance(
     );
 
   if (shouldUpdate) {
+
     // 此处也与resumeMountClassInstance() 不同
-    // updateClassInstance():componentWillUpdate/componentDidUpdate/getSnapshotBeforeUpdate
-    // resumeMountClassInstance()：componentWillMount/componentDidMount
+    // updateClassInstance():
+    // componentWillUpdate/componentDidUpdate/getSnapshotBeforeUpdate
+    
+    // resumeMountClassInstance():
+    // componentWillMount/componentDidMount
     if (
       !hasNewLifecycles &&
       (typeof instance.UNSAFE_componentWillUpdate === 'function' ||
@@ -667,6 +676,7 @@ function finishClassComponent(
 ) {
   // 无论是否更新 props/state,都必须更新ref指向
   markRef(current, workInProgress);
+  
   // 判断是否有错误捕获
   var didCaptureError =
     (workInProgress.effectTag & DidCapture) !== NoEffect;
@@ -676,6 +686,7 @@ function finishClassComponent(
     if (hasContext) {
       invalidateContextProvider(workInProgress, Component, false);
     }
+
     // 跳过该class上的节点,以及所有子节点的更新,即跳过调用render方法
     return bailoutOnAlreadyFinishedWork(
       current,
@@ -727,3 +738,8 @@ function finishClassComponent(
 + 如果没有捕获到error的话，则执行`instance.render()`，重新渲染，并返回`nextChildren`
 + 渲染后，如果捕获到error，则执行`forceUnmountCurrentAndReconcile()`，强制重新计算children。否则执行`reconcileChildren()`，将 ReactElement 变成 fiber 对象并更新，生成对应DOM的实例并挂载到真正的DOM上。
 + 最后返回render下的第一个节点`workInProgress.child`
+
+
+### 总结
+
+以上就是关于 ClassComponent 节点类型的实现解析。

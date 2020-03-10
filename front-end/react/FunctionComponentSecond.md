@@ -16,8 +16,8 @@
 
 该内容分为两个文章解析，分别讲述以下内容：
 
-+ 第一篇章，讲述渲染函数组件过程中对hooks API的使用  --  (详情)
-+ 第二篇章，将ReactElement变成fiber对象并更新的过程中对节点类型的实现(本文)
++ 第一章，讲述渲染函数组件过程中对hooks API的使用  --  (详情)
++ 第二章，将ReactElement变成fiber对象并更新的过程中对节点类型的实现(本文)
 
 
 
@@ -78,7 +78,7 @@ function reconcileChildFibers(...) {
 function reconcileSingleElement(
   returnFiber,
   currentFirstChild, // 旧
-  element, //新
+  element, // 新
   expirationTime
 ) {
   var key = element.key;
@@ -295,7 +295,7 @@ function reconcileChildrenArray(
   var nextOldFiber = null;
 
   // 复用节点的时候，会尽量减少数组遍历的次数
-  //跳出循环的条件是，在遍历新老数组的过程中,找到第一个不能复用的节点
+  // 跳出循环的条件是，在遍历新老数组的过程中,找到第一个不能复用的节点
   for (; oldFiber !== null && newIdx < newChildren.length; newIdx++) {
     // 当要更新的节点的 index 大于 newIndex 时，
     // 说明它不在所期盼的位置上，则需要“认真处理”oldFiber
@@ -309,7 +309,10 @@ function reconcileChildrenArray(
     }
 
     // 复用或新建节点
-    var newFiber = updateSlot(returnFiber, oldFiber, newChildren[newIdx], expirationTime);
+    var newFiber = updateSlot(
+      returnFiber, oldFiber,
+      newChildren[newIdx], expirationTime
+    );
 
     // 说明key不相同，节点不能复用，此时就跳出循环
     // 如果不跳出循环，说明可以是相同的
@@ -323,7 +326,6 @@ function reconcileChildrenArray(
 
     // 初次渲染
     if (shouldTrackSideEffects) {
-
       // newFiber.alternate表示并没有复用oldFiber来赋值,而是return了新的fiber
       if (oldFiber && newFiber.alternate === null) {
         // 删除存在的 旧的fiber
