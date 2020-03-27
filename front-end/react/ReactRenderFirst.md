@@ -2,7 +2,7 @@
 
 这是 React 源码阅读的第二篇文章，有以下几点事项需要注意以下：
 
-+ 目前阅读的 <strong>React 版本为 16.13.0</strong>
++ 目前阅读的 <b>React 版本为 16.13.0</b>
 + 需要辅以练习代码，在结合理解进行阅读，这样对理解react源码的帮助有所提升。
 + 文中提到的源码  均以 dev 环境下的源码, 可自行 yarn 对应包查看。
 
@@ -123,7 +123,7 @@ function createContainer(
 }
 ```
 
-在 `createRootImpl`中创建了一个FiberRoot对象，返回root给`ReactDOMBlockingRoot`函数，并且挂载到了 `_internalRoot` 上，和DOM树一样， <strong>fiber也会构建一个树结构(每个DOM节点一定对应一个fiber对象), FiberRoot就是整个fiber树的根节点</strong>。
+在 `createRootImpl`中创建了一个FiberRoot对象，返回root给`ReactDOMBlockingRoot`函数，并且挂载到了 `_internalRoot` 上，和DOM树一样， <b>fiber也会构建一个树结构(每个DOM节点一定对应一个fiber对象), FiberRoot就是整个fiber树的根节点</b>。
 
 接下来将学习到关于fiber的内容，这里提及一点，fiber 和 Fiber是两个不同的概念，前者代表着数据结构，后者代表着新的React架构。
 

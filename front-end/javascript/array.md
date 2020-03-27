@@ -403,18 +403,18 @@ numArr.sort(); // [2,3,5,6]
 + 定义：对数组中的每个元素执行一个自定义的累计器，将其结果汇总为单个返回值
 + 形式：`array.reduce((t, v, i, a) => {}, initValue)`
 + 参数
-    + <strong>callback</strong>：回调函数(必选)
-    + <strong>initValue</strong>：初始值(可选)
+    + <b>callback</b>：回调函数(必选)
+    + <b>initValue</b>：初始值(可选)
 
 + 回调函数的参数
-    + <strong>total(t)</strong>：累计器完成计算的返回值(必选)
-    + <strong>value(v)</strong>：当前元素(必选)
-    + <strong>index(i)</strong>：当前元素的索引(可选)
-    + <strong>array(a)</strong>：当前元素所属的数组对象(可选)
+    + <b>total(t)</b>：累计器完成计算的返回值(必选)
+    + <b>value(v)</b>：当前元素(必选)
+    + <b>index(i)</b>：当前元素的索引(可选)
+    + <b>array(a)</b>：当前元素所属的数组对象(可选)
 
 #### 高级用法
 
-+ <strong>累加累乘</strong>
++ <b>累加累乘</b>
 
 ```
 function Accmulation(...arr) {
@@ -427,7 +427,7 @@ Accmulation(1,2,3,4,5); // 15
 Multiplication(1,2,3,4,5); // 120
 ```
 
-+ <strong>权重求和</strong>
++ <b>权重求和</b>
 
 ```
 const scores = {
@@ -438,7 +438,7 @@ const scores = {
 const result = scores.reduce((t, v) => t + v.score * v.weight, 0);//[90.5]
 ```
 
-+ <strong>代替reverse</strong>
++ <b>代替reverse</b>
 
 ```
 function Reverse(arr = []) {
@@ -447,7 +447,7 @@ function Reverse(arr = []) {
 Reverse([1, 2, 3, 4, 5]); // [5, 4, 3, 2, 1]
 ```
 
-+ <strong>代替map和filter</strong>
++ <b>代替map和filter</b>
 
 ```
 const numArr = [0, 1, 2, 3];
@@ -464,7 +464,7 @@ const a = arr.map(v => v * 2).filter(v => v > 2);
 const b = arr.reduce((t, v) => v * 2 > 2 ? [...t, v * 2] : t, [])
 ```
 
-+ <strong>代替some和every</strong>
++ <b>代替some和every</b>
 
 ```
 const scores = {
@@ -479,7 +479,7 @@ const isOneClass = scores.reduce((t, v) => t || v.score >= 60, false)
 const isAllClass = scores.reduce((t, v) => t && v.scores >= 60, false)
 ```
 
-+ <strong>数组分割</strong>
++ <b>数组分割</b>
 
 ```
 function Chunk(arr = [], size = 1) {
@@ -489,7 +489,7 @@ const numArr = [1, 2, 3, 4, 5];
 Chunk(numArr, 2); // [[1, 2], [3, 4], [5]]
 ```
 
-+ <strong>数组过滤</strong>
++ <b>数组过滤</b>
 
 ```
 function Diff(nArr = [], oArr = []) {
@@ -501,7 +501,7 @@ const arr2 = [2,3,6];
 Diff(arr1, arr2); // [1, 4, 5]
 ```
 
-+ <strong>数组填充</strong>
++ <b>数组填充</b>
 
 ```
 function Fill(arr = [], val = '', start = 0, end = arr.length) {
@@ -516,7 +516,7 @@ const numArr = [0,1,2,3,4,5,6];
 Fill(arr, 'a', 2, 5); // [0, 1, 'a', 'a', 'a', 5, 6]
 ```
 
-+ <strong>数组扁平</strong>
++ <b>数组扁平</b>
 
 ```
 function Flat(arr = []) {
@@ -527,7 +527,7 @@ const numArr = [0, 1, [2, 3], [4, 5, [6, 7]], [8, [9, 10, [11, 12]]]];
 Flat(numArr); // [0,1,2,3,4,5,6,7,8,9,10,11,12]
 ```
 
-+ <strong>数组去重</strong> 
++ <b>数组去重</b> 
 
 ```
 function Uniq(arr = []) {
@@ -538,7 +538,7 @@ const numArr = [2, 1, 3, 2, 0, 6, 5, 3];
 Uniq(numArr); // [2, 1, 3, 0, 6, 5]
 ```
 
-+ <strong>数组最大最小值</strong>
++ <b>数组最大最小值</b>
 
 ```
 function Max(arr = []) {
@@ -552,7 +552,7 @@ Max(numArr); // 92
 Min(numArr); // 4
 ```
 
-+ <strong>数组项拆解</strong>
++ <b>数组项拆解</b>
 
 ```
 function Unzip(arr = []) {
@@ -564,7 +564,7 @@ const strArr = [["a", 1, true], ["b", 2, false]];
 Unzip(strArr); // [["a", "b"], [1, 2], [true, false]]
 ```
 
-+ <strong>数组项个数统计</strong>
++ <b>数组项个数统计</b>
 
 ```
 function Count(arr = []) {
@@ -574,7 +574,7 @@ const numArr = [0, 1, 1, 2, 2, 2];
 Count(numArr); // { 0: 1, 1: 2, 2: 3 }
 ```
 
-+ <strong>数组项位置记录</strong>
++ <b>数组项位置记录</b>
 
 ```
 function Position(arr = [], val) {
@@ -584,7 +584,7 @@ const numArr = [2, 1, 5, 4, 2, 1, 6, 6, 7];
 Position(numArr, 2); // [0, 4]
 ```
 
-+ <strong>字符串翻转</strong>
++ <b>字符串翻转</b>
 
 ```
 function ReverseStr(str = '') {

@@ -2,7 +2,7 @@
 
 这是 React 源码阅读的第三篇文章，有以下几点事项需要注意以下：
 
-+ 目前阅读的 <strong>React 版本为 16.13.0</strong>
++ 目前阅读的 <b>React 版本为 16.13.0</b>
 + 需要辅以练习代码，在结合理解进行阅读，这样对理解react源码的帮助有所提升。
 + 文中提到的源码  均以 dev 环境下的源码, 可自行 yarn 对应包查看。
 
@@ -149,7 +149,7 @@ function msToExpirationTime(ms) {
 currentTime = 1073741822 - ((2500 / 10) | 0) = 1073741572
 ```
 
-接下来计算 expirationTime，<strong>这个时间和优先级有关，值越大，优先级越高</strong>。并且同步是优先级最高的，它的值为 1073741823，也就是之前看到的常量 MAGIC_NUMBER_OFFSET  + 1。
+接下来计算 expirationTime，<b>这个时间和优先级有关，值越大，优先级越高</b>。并且同步是优先级最高的，它的值为 1073741823，也就是之前看到的常量 MAGIC_NUMBER_OFFSET  + 1。
 
 在 `computeExpirationForFiber` 函数中存在很多分支，但是计算的核心在三行代码上，分别是:
 

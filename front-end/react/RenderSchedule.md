@@ -2,7 +2,7 @@
 
 这是 React 源码阅读的第四篇文章，有以下几点事项需要注意以下：
 
-+ 目前阅读的 <strong>React 版本为 16.13.0</strong>
++ 目前阅读的 <b>React 版本为 16.13.0</b>
 + 需要辅以练习代码，在结合理解进行阅读，这样对理解react源码的帮助有所提升。
 + 文中提到的源码  均以 dev 环境下的源码, 可自行 yarn 对应包查看。
 
@@ -465,7 +465,7 @@ function unstable_scheduleCallback(priorityLevel, callback, options) {
 }
 ```
 
-异步的方法会传入一个timeout参数可以直接使用。如果没有回根据优先级计算出一个固定的值，对于每一个任务都会定义成一个新的任务task，<strong>任务队列实际是一个基于数组实现的最小推，排序的key就是新计算出来的expirationTime</strong> 所以这里可以看到不管同步还是异步任务最终都是推入了一个任务队列中等待执行。最后执行`requestHostCallback`就是用`MessageChannel`的异步方法来开启任务调度`performWorkUntilDeadline`
+异步的方法会传入一个timeout参数可以直接使用。如果没有回根据优先级计算出一个固定的值，对于每一个任务都会定义成一个新的任务task，<b>任务队列实际是一个基于数组实现的最小推，排序的key就是新计算出来的expirationTime</b> 所以这里可以看到不管同步还是异步任务最终都是推入了一个任务队列中等待执行。最后执行`requestHostCallback`就是用`MessageChannel`的异步方法来开启任务调度`performWorkUntilDeadline`
 
 ### performWorkUntilDeadline()
 
