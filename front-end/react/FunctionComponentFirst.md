@@ -23,7 +23,7 @@
 
 在第五章中提到，workLoop() 的过程中workInProgress.tag判断类型为 `FunctionComponent`，会进行相应的更新。
 
-```
+```javascript
 function beginWork(current, workInProgress, renderExpirationTime) {
   // ...省略部分代码
   switch (workInProgress.tag) {
@@ -50,7 +50,7 @@ function beginWork(current, workInProgress, renderExpirationTime) {
 
 ### updateFunctionComponent()
 
-```
+```javascript
 // 执行FunctionComponent的更新
 // 省略dev代码跟部分代码，后续会讲到
 function updateFunctionComponent(
@@ -117,7 +117,7 @@ function updateFunctionComponent(
 
 ### renderWithHooks()
 
-```
+```javascript
 // 渲染的过程中，对hooks函数做一些操作
 
 function renderWithHooks(
@@ -183,7 +183,7 @@ function renderWithHooks(
 + 根据current用来判断是否是组件的第一次渲染
 + 无论是 `HooksDispatcherOnUpdate`还是`HooksDispatcherOnMount`, 它们都是存放hooks函数的对象
 
-```
+```javascript
 HooksDispatcherOnMount = {
   readContext: function (context, observedBits) {
     return readContext(context, observedBits);
@@ -225,7 +225,7 @@ HooksDispatcherOnUpdateInDEV = {
 
 在该函数中,将ReactElement变成fiber对象并更新, 生成对应DOM实例, 并挂载到真正的DOM节点上
 
-```
+```javascript
 function reconcileChildren(
   current, workInProgress,
   nextChildren, renderExpirationTime
@@ -246,7 +246,7 @@ function reconcileChildren(
 
 因为 `mountChildFibers`和`reconcileChildFibers`调用得是同一个函数
 
-```
+```javascript
 // false表示是第一次渲染，true反之
 var reconcileChildFibers = ChildReconciler(true);
 var mountChildFibers = ChildReconciler(false);
@@ -256,7 +256,7 @@ var mountChildFibers = ChildReconciler(false);
 
 该方法前面全是 function的定义，最后返回 `reconcileChildFibers`
 
-```
+```javascript
 function ChildReconciler(shouldTrackSideEffects) {
   // 省略部分代码
   function reconcileChildFibers(
@@ -271,7 +271,7 @@ function ChildReconciler(shouldTrackSideEffects) {
 
 因为第一次渲染时无副作用，所以 `shouldTrackSideEffects`为false，多次渲染是有副作用的，所以 `shouldTrackSideEffects`为true。
 
-```
+```javascript
 function reconcileChildFibers(
   returnFiber,
   currentFirstChild,

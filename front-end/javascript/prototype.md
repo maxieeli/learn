@@ -4,7 +4,7 @@
 
 首先，用一个构造函数创建一个对象：
 
-```
+```javascript
 function Person() {}
 var person = new Person();
 person.name = 'javascript';
@@ -19,7 +19,7 @@ console.log(person.name); // javascript
 
 每个函数都有一个prototype属性，例如：
 
-```
+```javascript
 function Person () {}
 Person.prototype.name = 'javascript';
 const person1 = new Person();
@@ -49,7 +49,7 @@ console.log(person2.name); // javascript;
 
 这是每一个 JavaScript 对象(null除外)都具有的一个属性，叫 `__proto__`，该属性会指向该对象的原型。比如以下代码所示：
 
-```
+```javascript
 function Person() {}
 const person = new Person();
 console.log(person.__proto__ === Person.prototype); // true
@@ -71,7 +71,7 @@ console.log(person.__proto__ === Person.prototype); // true
 
 构造函数指向实例倒是没有，因为一个构造函数可以生成多个实例，但是原型指向构造函数倒是有的，也就是 constructor，每个原型都有一个 constructor 属性指向关联的构造函数。
 
-```
+```javascript
 function Person () {}
 console.log(Person === Person.prototype.constructor); // true
 ```
@@ -86,7 +86,7 @@ console.log(Person === Person.prototype.constructor); // true
 
 综上所述，可以得出以下几个结论：
 
-```
+```javascript
 function Person() {}
 const person = new Person();
 console.log(person.__proto__ === Person.prototype); // true
@@ -105,7 +105,7 @@ console.log(Object.getPrototypeOf(person) === Person.prototype); // true
 
 例子：
 
-```
+```javascript
 function Person() {}
 Person.prototype.name = 'javascript';
 
@@ -127,7 +127,7 @@ console.log(person.name); // javascript
 
 上面描述到，原型也是一个对象，既然是对象，那么就可以用原始的方式创建出来，即：
 
-```
+```javascript
 var obj = new Object();
 obj.name = 'javascript';
 console.log(obj.name); // javascript
@@ -166,7 +166,7 @@ console.log(Object.prototype.__proto__ === null); // true
 
 先看个例子：
 
-```
+```javascript
 function Person() {}
 const person = new Person();
 console.log(person.constructor === Person); // true

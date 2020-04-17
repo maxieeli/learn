@@ -25,7 +25,7 @@
     + 父组件给子组件传递函数时，必须绑定this
     + react中的组件四种绑定this方法的区别
 
-```
+```javascript
 class App extends React.Component<any, any> {
   handleClick2;
   constructor(props) {
@@ -88,14 +88,14 @@ class App extends React.Component<any, any> {
     + 在初始化渲染期间，返回的state与传入的第一个参数(initialState)值相同
     + 可以在事件处理函数中或其他地方调用这个函数，它类似class组件的this.setState，但是它不会把新的state和旧的state进行合并，而是直接替换
 
-```
+```javascript
 //这里可以任意命名，因为返回的是数组，数组解构
 const [state, setState] = useState(initialState)
 ```
 
 ### 4.1 使用例子
 
-```
+```javascript
 import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 
@@ -145,7 +145,7 @@ ReactDOM.render(<Parent />, rootElement)
 + 每一次渲染都有它自己的事件处理函数
 + 当点击更新状态时，函数组件都会重新被调用，那么每次渲染都是独立的，取到的值不会受后面操作的影响。
 
-```
+```javascript
 function Counter2() {
   let [number, setNumber] = useState(0)
   function alertNumber() {
@@ -167,7 +167,7 @@ function Counter2() {
 
 + 如果新的state需要通过使用先前state计算得出，那么可以将回调函数当做参数传递给setState,该回调函数将接收先前的state，并返回一个更新后的值。
 
-```
+```javascript
 function Counter() {
   let [number, setNumber] = useState(0)
   function lazy() {
@@ -191,7 +191,7 @@ function Counter() {
 + initialState参数只会在组件的初始化渲染中起作用，后续渲染时会被忽略
 + 如果初始state需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的state，此函数只在初始渲染时被调用
 
-```
+```javascript
 function Counter (props) {
   function getInitState() {
     return { number: props.number }
@@ -217,7 +217,7 @@ function Counter (props) {
 + 与class组件中的setState方法不同，如果你修改状态时，传的状态值没有变化，则不重新渲染。
 + 与class组件中的setState方法不同。useState不会自动合并更新对象，可以用函数式的setState结合展开运算符来达到合并更新对象的效果
 
-```
+```javascript
 function Counter() {
   const [counter, setCounter] = useState({name: 'react', number: 0})
   return (
@@ -241,7 +241,7 @@ function Counter() {
 
 但是怎么保证属性不会变呢？这里使用useState，每次更新都是独立的，也就是说每次都会生成一个新的值(哪怕这个值没有变化)，即使使用了React.memo，也还是会重新渲染
 
-```
+```javascript
 import React, {useState, memo, useMemo, useCallback} from 'react'
 function SubCounter({onClick, data}) {
   return (
@@ -272,7 +272,7 @@ export default function Counter() {
     + useCallback：接收一个内联回调函数参数和一个依赖项数组，useCallback会返回该回调函数的memoized版本，该回调函数仅在某个依赖项改变时才会更新。
     + useMemo：把创建函数和依赖项数组作为参数传入useMemo，它仅会在某个依赖项改变时才重新计算memoized值，这种优化有助于避免在每次渲染时都进行高开销的计算
 
-```
+```javascript
 import React, {useState, memo, useMemo, useCallback} from 'react'
 function SubCounter({onClick, data}) {
   return (
@@ -308,12 +308,12 @@ export default function Counter() {
 + useState 的替代方案，它接收一个形如 (state, action) => newState 的 reducer，并返回当前的 state 以及与其配套的 dispatch 方法
 + 在某些场景下，useReducer 会比 useState 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等
 
-```
+```javascript
 let initialState = 0
 const [state, dispatch] = useReducer(reducer, initialState, init)
 ```
 
-```
+```javascript
 const initialState = 0
 function reducer(state, action) {
   switch(action.type) {
@@ -352,7 +352,7 @@ function Counter() {
 + useContext(MyContext)相当于class组件中的`static contextType = MyContext` 或 `<MyContext.Consumer>`
 + `useContext(MyContext)`只是能够读取到context的值以及订阅context的变化，仍然需要在上层组件树种使用`<MyContext.Provider>`来为下层组件提供context
 
-```
+```javascript
 import React, {
   useState, memo, useMemo, useCallback,
   useReducer, createContext, useContext
@@ -422,7 +422,7 @@ ReactDOM.render(<Counter />, document.getElementById('root'))
 
 + 在这个 class 中，我们需要在两个生命周期函数中编写重复的代码，这是因为很多情况下，我们希望在组件加载和更新时执行同样的操作。我们希望它在每次渲染之后执行，但 React 的 class 组件没有提供这样的方法。即使我们提取出一个方法，我们还是要在两个地方调用它。而 useEffect 会在第一次渲染之后和每次更新之后都会执行
 
-```
+```javascript
 class Counter extends React.Component {
   componentDidMount() {
     this.changeTitle();
@@ -443,7 +443,7 @@ class Counter extends React.Component {
 
 ### 7.2 使用useEffect实现修改标题
 
-```
+```javascript
 import React, {useEffect} from 'react'
 
 function Counter() {
@@ -460,7 +460,7 @@ function Counter() {
 
 + 副作用函数还可以通过返回一个函数来指定如何清除副作用，为防止内存泄漏，清除函数会在组件卸载前执行。如果组件多次渲染，则在执行下一个effect之前，上一个effect就已经被清空
 
-```
+```javascript
 function Counter() {
   let [number, setNumber] = useState(0)
   let [text, setText] = useState('')
@@ -486,7 +486,7 @@ function Counter() {
 + 如果某些特定值在两次重渲染之间没有发生变化，可以通知React跳过对effect的调用，只要传递数组作为useEffect的第二个可选参数即可。
 + 如果想执行只运行一次的effect(仅在组件挂载和卸载时执行)，可以传递一个空数组作为第二个参数，这就告诉React你的effect不依赖于props或state中的任何值，所以它永远都不需要重复执行。
 
-```
+```javascript
 function Counter() {
   let [number, setNumber] = useState(0)
   let [text, setText] = useS5tate('')
@@ -508,7 +508,7 @@ function Counter() {
 
 + 使用Hook其中一个目的就是要解决class中生命周期函数经常包含不相关的逻辑，但又把相关逻辑分离到几个不同方法中的问题。
 
-```
+```javascript
 class FriendStatusWithCounter extends React.Component {
   constructor(props) {
     super(props);
@@ -525,7 +525,7 @@ class FriendStatusWithCounter extends React.Component {
 
 + Hooks允许按照代码的用途分离它们，而不是像生命周期那样，react将按照effect声明的顺序依次调用组件中的每一个effect
 
-```
+```javascript
 function FriendStatusWithCounter(props) {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -555,7 +555,7 @@ function FriendStatusWithCounter(props) {
 + useRef返回一个可变的ref对象，其current属性被初始化为传入的参数(initalValue)
 + useRef 返回的 ref 对象在组件的整个生命周期内保持不变，也就是说每次重新渲染函数组件时，返回的 ref 对象都是同一个(使用React.createRef，每次重新渲染组件都会重新创建 ref)
 
-```
+```javascript
 import React, {useState, useEffect, useRef} from 'react'
 function Parent() {
   let [number, setNumber] = useState(0)
@@ -588,7 +588,7 @@ function Child() {
 + forwardRef可以将父组件中的ref对象转发到子组件中的DOM元素上
 + 子组件接受 props 和 ref 作为参数
 
-```
+```javascript
 function Child(props, ref) {
   return (
     <input type="text" ref={ref} />
@@ -618,7 +618,7 @@ function Parent() {
 + 大多数情况下，应当避免使用ref这样的命令式代码，useImperativeHandle应当与forwardRef 一起使用
 + 父组件可以使用操作子组件中的多个ref
 
-```
+```javascript
 import React, {
   useState, useEffect, createRef, useRef
   forwardRef, useImperativeHandle
@@ -668,7 +668,7 @@ function Parent(){
 + Hook是一种复用状态逻辑的方式，它不复用state本身
 + Hook的每次调用都有一个完全独立的state
 
-```
+```javascript
 import React, {useLayoutEffect, useEffect, useState} from 'react'
 import ReactDOM from 'react-dom'
 
@@ -720,7 +720,7 @@ function Counter() {
 
 ### 5. 在Hooks中使用 fetch data
 
-```
+```javascript
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 function App () {
@@ -750,13 +750,3 @@ export default App;
 ### 7. useEffect不能接收async作为回调函数
 
 + useEffect接收的函数，要么返回一个能清除副作用的函数，要么不返回任何内容，async返回的是promise
-
-
-
-
-
-
-
-
-
-

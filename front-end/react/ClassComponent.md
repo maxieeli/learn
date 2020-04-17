@@ -25,7 +25,7 @@
 
 在第五章中提到，workLoop() 的过程中workInProgress.tag判断类型为 `ClassComponent`，会进行相应的更新。
 
-```
+```javascript
 function beginWork(current, workInProgress, renderExpirationTime) {
   // ...省略部分代码
   switch (workInProgress.tag) {
@@ -56,7 +56,7 @@ function beginWork(current, workInProgress, renderExpirationTime) {
 
 ### updateClassComponent()
 
-```
+```javascript
 function updateClassComponent(
   current,
   workInProgress,
@@ -116,7 +116,7 @@ function updateClassComponent(
 
 作用：构建Class Instance
 
-```
+```javascript
 function constructClassInstance(workInProgress, ctor, props) {
   var isLegacyContextConsumer = false;
   var unmaskedContext = emptyContextObject;
@@ -162,7 +162,7 @@ function constructClassInstance(workInProgress, ctor, props) {
 + 将新的ClassComponent实例赋值给workInProgress.stateNode
 + 执行set方法，将workInProgress赋值给`instance._reactInternalFiber`，这样就能通过 instance 即 this 找到了 workInProgress
 
-```
+```javascript
 function adoptClassInstance(workInProgress, instance) {
   instance.updater = classComponentUpdater;
   workInProgress.stateNode = instance;
@@ -175,7 +175,7 @@ function adoptClassInstance(workInProgress, instance) {
 
 作用：在未render的class实例上调用挂载生命周期
 
-```
+```javascript
 function mountClassInstance(
   workInProgress,
   ctor,
@@ -272,7 +272,7 @@ mountClassInstance() 的逻辑如下：
 
 ### updateClassComponent()
 
-```
+```javascript
 function updateClassComponent(
   current, workInProgress,
   Component, nextProps,
@@ -319,7 +319,7 @@ function updateClassComponent(
 
 作用：复用 `ClassComponent`实例，更新props和state，调用生命周期函数`componentWillMount()`和`componentDidMount()`，最终返回`shouldUpdate`
 
-```
+```javascript
 function resumeMountClassInstance(
   workInProgress,
   ctor,
@@ -453,7 +453,7 @@ function resumeMountClassInstance(
 
 作用：检查是否有props/state的更新,也是判断是否需要执行`shouldComponentUpdate()`
 
-```
+```javascript
 function checkShouldComponentUpdate(
   workInProgress,
   ctor,
@@ -491,7 +491,7 @@ function checkShouldComponentUpdate(
 
 作用：当已经创建实例并且不是第一次渲染的话，调用更新的生命周期`componentWillUpdate/ componentDidUpdate`
 
-```
+```javascript
 function updateClassInstance(
   current,
   workInProgress,
@@ -653,7 +653,7 @@ function updateClassInstance(
 
 ## 接下来看updateClassComponent()中最后一种情况
 
-```
+```javascript
 function updateClassComponent() {
   // ...
   var nextUnitOfWork = finishClassComponent(
@@ -668,7 +668,7 @@ function updateClassComponent() {
 
 作用：判断是否执行 `render()`,并返回render下的第一个child
 
-```
+```javascript
 function finishClassComponent(
   current, workInProgress,
   Component, shouldUpdate,

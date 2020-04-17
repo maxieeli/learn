@@ -6,21 +6,21 @@ TypeScript具有类型系统，且是JavaScript的超集，它可以编译成普
 
 ## 目录
 
-  + <a href="#basic">基础类型</a>
-  + <a href="#interface">接口</a>
-  + <a href="#class">类</a>
-  + <a href="#function">函数</a>
-  + <a href="#generic">泛型</a>
-  + <a href="#enum">枚举</a>
-  + <a href="#type">类型推论</a>
-  + <a href="#higher">高级类型</a>
-  + <a href="#module">模块</a>
-  + <a href="#namespace">命名空间</a>
-  + <a href="#merge">声明合并</a>
+  + [基础类型](#basic)
+  + [接口](#interface)
+  + [类](#class)
+  + [函数](#function)
+  + [泛型](#generic)
+  + [枚举](#enum)
+  + [类型推论](#type)
+  + [高级类型](#higher)
+  + [模块](#module)
+  + [命名空间](#namespace)
+  + [声明合并](#merge)
 
 
 
-### <a name="basic">基础类型</a>
+### <span id="basic">基础类型</span>
 
 #### 介绍
 
@@ -193,7 +193,7 @@ let strLength: number = (someValue as string).length;
 
 
 
-### <a name="interface">接口</a>
+### <span id="interface">接口</span>
 
 TypeScript的核心原则之一是对值所具有的结构进行类型检查，在TypeScript中，接口的作用就是为这些类型命名和为代码定义契约。
 
@@ -353,7 +353,7 @@ c.interval = 5;
 
 
 
-### <a name="class">类</a>
+### <span id="class">类</span>
 
 传统的JavaScript程序使用函数和基于原型的继承来创建可重用的组件。
 
@@ -523,7 +523,7 @@ department.generateReports(); // 错误: 方法在声明的抽象类中不存在
 
 
 
-### <a name="function">函数</a>
+### <span id="function">函数</span> 
 
 函数是JavaScript应用程序的基础，它帮助实现抽象层，模拟类，模块。在TypeScript中，虽然已经支持类，命名空间，当函数仍然是主要的定义行为的地方。
 
@@ -654,7 +654,7 @@ console.log(`card:${pickedCard2.card} of ${pickedCard2.suit}`);
 
 
 
-### <a name="generic">泛型</a>
+### <span id="generic">泛型</span>
 
 像Java语言中，可以使用泛型来创建可重用的组件，一个组件可以支持多种类型的数据。这样用户就可以以自己的数据类型来使用组件。
 
@@ -742,7 +742,7 @@ lenIdentity({length: 10, value: 3}); // ok
 
 
 
-### <a name="enum">枚举</a>
+### <span id="enum">枚举</span>
 
 使用枚举可以定义一些带名字的常量，使用枚举可以清晰的表达意图或创建一组有区别的用力，TypeScript支持数字和基于字符串的枚举。
 
@@ -801,7 +801,7 @@ let c: Circle = {
 
 
 
-### <a name="higher">高级类型</a>
+### <span id="higher">高级类型</span>
 
 #### 交叉类型
 
@@ -952,7 +952,7 @@ let strings: string[] = pluck(person, ['name']);
 
 
 
-### <a name="module">模块</a>
+### <span id="module">模块</span>
 
 从ECMAScript 2015开始，JavaScript引入了模块的概念。TypeScript也沿用这个概念。
 模块在其自身的作用域里执行，而不是在全局作用域里；这意味着定义在一个模块里的变量，函数，类等等在模块外部是不可见的，除非你明确地使用export形式之一导出它们。 相反，如果想使用其它模块导出的变量，函数，类，接口等的时候，必须要导入它们，可以使用import形式之一。
@@ -988,7 +988,7 @@ import {codeValidator} from './codeValidator';
 import * as validator from './codeValidator';
 ```
 
-### <a name="namespace">命名空间</a>
+### <span id="namespace">命名空间</span>
 
 随着更多模块的加入，开发者需要一种手段来组织代码，以便在记录它们类型的同时还不用担心与其它对象产生命名冲突。 因此，把模块包裹到一个命名空间内，而非把它们放在全局命名空间下。
 
@@ -1027,7 +1027,7 @@ for (let s of strings) {
 
 
 
-### <a name="merge">声明合并</a>
+### <span id="merge">声明合并</span>
 
 TypeScript中有些独特的概念可以在类型层面上描述JavaScript对象的模型。 这其中尤其独特的一个例子是“声明合并”的概念。 理解了这个概念，将有助于操作现有的JavaScript代码。 同时，也会有助于理解更多高级抽象的概念。
 

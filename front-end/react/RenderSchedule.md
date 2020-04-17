@@ -38,7 +38,7 @@
 
 首先 setState 之后会触发 `enqueueSetState` 函数，创建了 update 之后会调用 `scheduleWork`，即调用`scheduleUpdateOnFiber`函数。
 
-```
+```javascript
 function scheduleUpdateOnFiber(fiber, expirationTime) {
   // 判断是否是无限循环update
   checkForNestedUpdates();
@@ -118,7 +118,7 @@ function scheduleUpdateOnFiber(fiber, expirationTime) {
 + 超过50成嵌套update，就终止进行调度，并报error
 + 造成死循环的原因: 在render()中无条件的使用 setState
 
-```
+```javascript
 const NESTED_UPDATE_LIMIT = 50;
 let nestedUpdateCount: number = 0;
 
@@ -139,7 +139,7 @@ function checkForNestedUpdates() {
 
 作用：找到rootFiber并遍历更新子节点的expirationTime
 
-```
+```javascript
 // 目标fiber会向上寻找 rootFiber对象，在寻找的过程中会进行一些操作
 function markUpdateTimeFromFiberToRoot(fiber, expirationTime) {
 
@@ -210,7 +210,7 @@ function markUpdateTimeFromFiberToRoot(fiber, expirationTime) {
 
 作用：判断是否有高优先级任务打断当前正在执行的任务
 
-```
+```javascript
 function checkForInterruption(
   fiberThatReceivedUpdate,
   updateExpirationTime
@@ -230,7 +230,7 @@ function checkForInterruption(
 
 作用：获取当前调度任务的优先级
 
-```
+```javascript
 // 除了90，用数字是因为这样做，方便比较
 // 从90开始的原因是防止和Scheduler的优先级冲突
 export const ImmediatePriority: ReactPriorityLevel = 99;
@@ -261,7 +261,7 @@ function getCurrentPriorityLevel() {
 
 以上是同步任务第一次render的时候，接下来描述第二种情况。定位代码：
 
-```
+```javascript
 function scheduleUpdateOnFiber(fiber, expirationTime) {
   // ...省略部分代码
   if (expirationTime === Sync) {
@@ -279,7 +279,7 @@ function scheduleUpdateOnFiber(fiber, expirationTime) {
 
 描述：每一个root都有一个唯一的调度任务,如果已经存在，我们要确保到期时间与下一级别任务的相同，每一次更新都会调用这方法
 
-```
+```javascript
 function ensureRootIsScheduled(root) {
   var lastExpiredTime = root.lastExpiredTime;
 
@@ -353,7 +353,7 @@ function ensureRootIsScheduled(root) {
 + 同步任务调度的中间方法，如果队列不为空就加入队列，如果为空就立即推入任务调度队列
 + 将同步任务推入同步队列 syncQueue，等待 flushSyncCallbackQueue调用将所有同步任务推入真正的任务队列，如果第一次的同步任务会直接加入调度队列
 
-```
+```javascript
 function scheduleSyncCallback(callback) {
   if (syncQueue === null) {
     syncQueue = [callback]; 
@@ -372,7 +372,7 @@ function scheduleSyncCallback(callback) {
 
 作用：异步任务调度，直接将异步任务推入调度队列
 
-```
+```javascript
 function scheduleCallback(reactPriorityLevel, callback, options) {
   var priorityLevel = reactPriorityToSchedulerPriority(
     reactPriorityLevel
@@ -385,7 +385,7 @@ function scheduleCallback(reactPriorityLevel, callback, options) {
 
 ### unstable_scheduleCallback()
 
-```
+```javascript
 /**
  * 将一个任务推入任务调度队列
  * priorityLevel - 当前任务优先级
@@ -471,7 +471,7 @@ function unstable_scheduleCallback(priorityLevel, callback, options) {
 
 作用： 执行工作直到超时
 
-```
+```javascript
 var performWorkUntilDeadline = function () {
   // 可能有被取消的情况
   if (scheduledHostCallback !== null) {
@@ -508,7 +508,7 @@ var performWorkUntilDeadline = function () {
 
 ### workLoop()
 
-```
+```javascript
 // 循环工作将task中的任务都执行了
 function workLoop(hasTimeRemaining, initialTime) {
   var currentTime = initialTime;
@@ -581,5 +581,4 @@ function workLoop(hasTimeRemaining, initialTime) {
 以上就是React调度机制的过程，用一个流程图表示该文章所述。
 
 ![renderSchedule.png](https://i.loli.net/2020/03/09/wn7m6JtWiSzRsuM.png)
-
 

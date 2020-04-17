@@ -37,7 +37,7 @@ React.createElement(‘div’, {
 
 然后是对于config的处理：
 
-```
+```javascript
 if (config != null) {
   if (hasValidRef(config)) {
     ref = config.ref;
@@ -62,7 +62,7 @@ if (config != null) {
 
 下面是对 children 的操作
 
-```
+```javascript
 var childrenLength = arguments.length - 2;
 if (childrenLength === 1) {
   props.children = children;
@@ -84,7 +84,7 @@ if (childrenLength === 1) {
 
 最后返回了一个 ReactElement 对象。
 
-```
+```javascript
 let ReactElement = function(type, key, ref, self, source, owner, props){
   var element = {
     $$typeof: REACT_ELEMENT_TYPE,

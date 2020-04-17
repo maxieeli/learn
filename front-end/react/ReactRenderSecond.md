@@ -16,7 +16,7 @@
 
 在上一篇中，介绍了当 ReactDOM.render执行时，内部会首先判断是否存在root，没有的话会去创建一个root，在这篇文章中，将会了解到 存在root后会发生什么事情
 
-```
+```javascript
 function legacyRenderSubtreeIntoContainer(
   parentComponent,
   children,
@@ -49,7 +49,7 @@ this.setState({age: 3})
 
 接下来解析下`unbatchedUpdates`函数的执行
 
-```
+```javascript
 // 实际上该函数是一种强制同步更新的方法.
 // 处理传入函数的executionContext上下文
 
@@ -74,7 +74,7 @@ function unbatchedUpdates(fn, a) {
 
 接下来看下 `updateContainer`内部是怎么执行的。
 
-```
+```javascript
 // 计算过期时间 -> 创建更新的update对象 -> 加入到调度队列 -> 开启任务调度
 function updateContainer(
   element,
@@ -105,7 +105,7 @@ function updateContainer(
 
 首先是currentTime，调用了`requestCurrentTimeForUpdate`函数
 
-```
+```javascript
 var currentEventTime = NoWork; // 0
 
 function requestCurrentTimeForUpdate() {
@@ -129,7 +129,7 @@ now() 就是 performance.now()，这里有对该API的详细介绍[相关文档]
 
 然后需要把计算出来的值再通过一个公式算一遍，这里的 `| 0`作用是取整数。
 
-```
+```javascript
 var MAX_SIGNED_31_BIT_INT = 1073741823;
 var Sync = MAX_SIGNED_31_BIT_INT;
 var Batched = Sync - 1;
@@ -153,7 +153,7 @@ currentTime = 1073741822 - ((2500 / 10) | 0) = 1073741572
 
 在 `computeExpirationForFiber` 函数中存在很多分支，但是计算的核心在三行代码上，分别是:
 
-```
+```javascript
 // 同步
 expirationTime = Sync
 // 交互事件，优先级较高
@@ -164,7 +164,7 @@ expirationTime = computeAsyncExpiration(currentTime)
 
 接下来就来分析 `computeInteractiveExpiration`函数内部是如何计算时间的，当然 `computeAsyncExpiration`计算时间的方式是相同的，无非换了两个变量。
 
-```
+```javascript
 var HIGH_PRIORITY_EXPIRATION =  500 ;
 var HIGH_PRIORITY_BATCH_SIZE = 100;
 function computeInteractiveExpiration(currentTime) {
@@ -203,7 +203,7 @@ expirationTime指的就是一个任务的过期时间， React根据任务的优
 
 当计算好expirationTime后，就会执行到 createUpdate函数来
 
-```
+```javascript
 function updateContainer(
   element,
   container,
@@ -227,7 +227,7 @@ function updateContainer(
 
 首先会创建一个update，这个对象与setState有关联。
 
-```
+```javascript
 function createUpdate(expirationTime, suspenseConfig) {
   var update = {
     // update对象的内部属性

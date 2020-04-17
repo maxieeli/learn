@@ -16,13 +16,13 @@
 
 想必写过React项目都有写过以下类似的代码
 
-```
+```javascript
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 这句代码告知了React应用想在容器中渲染出一个组件，这通常也是一个React应用的入口代码，接下来就来梳理整个render的过程。
 
-```
+```javascript
 function render(element, container, callback) {
   if (!isValidContainer(container)) {
     { throw Error( "Target container is not a DOM element." ); }
@@ -41,7 +41,7 @@ function render(element, container, callback) {
 
 接下来进入 `legacyRenderSubtreeIntoContainer` 函数中，这部分源码需要分为两部分来讲，第一部分是没有 root之前首先需要创建一个root，第二部分是有root之后的渲染流程。
 
-```
+```javascript
 function legacyRenderSubtreeIntoContainer(
   parentComponent,
   children,
@@ -59,13 +59,13 @@ function legacyRenderSubtreeIntoContainer(
 
 一开始进来函数的时候肯定是没有root的，因此需要去创建一个root，可以发现这个root对象同样也被挂载在了 `container._reactRootContainer` 上。也就是DOM容器上，可以在浏览器的控制台输入查看对象。
 
-```
+```javascript
 document.querySelector('#root')._reactRootContainer
 ```
 
 得出的结果可以看到 root 是 ReactRoot 构造函数构造出来的，并且内部有一个 `_internalRoot`对象，这个对象是接下来要重点介绍的 fiber 对象。
 
-```
+```javascript
 function legacyCreateRootFromDOMContainer(container, forceHydrate) {
   var shouldHydrate = 
     forceHydrate || shouldHydrateDueToLegacyHeuristic(container);
@@ -94,7 +94,7 @@ function legacyCreateRootFromDOMContainer(container, forceHydrate) {
 
 最后返回一个 `createLegacyRoot`函数。其最终也是创建一个 ReactRoot对象。
 
-```
+```javascript
 function createLegacyRoot(container, options) {
   return new ReactDOMBlockingRoot(container, LegacyRoot, options);
 }
@@ -127,7 +127,7 @@ function createContainer(
 
 接下来将学习到关于fiber的内容，这里提及一点，fiber 和 Fiber是两个不同的概念，前者代表着数据结构，后者代表着新的React架构。
 
-```
+```javascript
 function createFiberRoot(
   containerInfo,
   tag,
@@ -151,7 +151,7 @@ function createFiberRoot(
 
 对于RootFiber对象来说，需要了解的属性相对多点。
 
-```
+```javascript
 function FiberNode(tag, pendingProps, key, mode) {
   this.stateNode = null;
   this.return = null;
@@ -166,7 +166,7 @@ return、child、sibling这三个属性很重要，因为它们是构成 fiber �
 
 每个子节点都有一个sibling属性指向着下一个子节点，都有一个return属性指向着父节点。
 
-```
+```javascript
 // 用代码表示fiber树结构
 const App = () => (
   <div>
@@ -206,5 +206,4 @@ const fiber = document.querySelector('#root')._reactRootContainer._internalRoot;
 以上就是本文的所有内容了，最后用图的形式总结一下该篇的内容。
 
 ![renderFirst.png](https://i.loli.net/2020/03/05/KZdoius5r2CyJax.png)
-
 

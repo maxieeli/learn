@@ -25,7 +25,7 @@
 
 上一篇结尾讲述到更新过程中对几种节点类型的实现，接下来来继续解析各种不同类型对应的不同函数调用。代码定位：
 
-```
+```javascript
 function reconcileChildFibers(...) {
   // ...省略部分代码，详情请看上文
   var isObject = typeof newChild === 'object' && newChild !== null;
@@ -74,7 +74,7 @@ function reconcileChildFibers(...) {
 + 当子节点不为null，则复用子节点并删除它的兄弟节点
 + 当子节点为null，则创建新的fiber节点
 
-```
+```javascript
 function reconcileSingleElement(
   returnFiber,
   currentFirstChild, // 旧
@@ -170,7 +170,7 @@ function reconcileSingleElement(
 
 作用：复制fiber节点，并重置index和sibling
 
-```
+```javascript
 function useFiber(fiber, pendingProps) {
   var clone = createWorkInProgress(fiber, pendingProps);
   clone.index = 0;
@@ -183,7 +183,7 @@ function useFiber(fiber, pendingProps) {
 
 作用：通过doubleBuffer重用未更新的fiber对象
 
-```
+```javascript
 function createWorkInProgress(current, pendingProps) {
   var workInProgress = current.alternate;
 
@@ -236,7 +236,7 @@ function createWorkInProgress(current, pendingProps) {
 
 作用：复用或创建文本节点
 
-```
+```javascript
 function reconcileSingleTextNode(
   returnFiber,
   currentFirstChild,
@@ -279,7 +279,7 @@ function reconcileSingleTextNode(
 
 作用：更新数组节点
 
-```
+```javascript
 function reconcileChildrenArray(
   returnFiber,
   currentFirstChild,

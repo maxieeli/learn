@@ -33,7 +33,7 @@
 
 ### performUnitOfWork()
 
-```
+```javascript
 // 从上到下遍历操作节点,至底层后,再从下至上根据effectTag操作节点
 function performUnitOfWork(unitOfWork) {
   // 获取当前节点
@@ -66,7 +66,7 @@ function performUnitOfWork(unitOfWork) {
 
 ### beginWork()
 
-```
+```javascript
 // 判断fiber有无更新，有更新则进行相应的组件更新，无更新则复制节点
 function beginWork(current, workInProgress, renderExpirationTime) {
 
@@ -165,7 +165,7 @@ function beginWork(current, workInProgress, renderExpirationTime) {
 
 ### completeUnitOfWork()
 
-```
+```javascript
 // 完成当前节点的work, 然后移动到兄弟节点，重复该操作, 当没有更多兄弟节点时, 返回至父节点
 function completeUnitOfWork(unitOfWork) {
 

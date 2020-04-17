@@ -6,7 +6,7 @@
 
 想必使用过 Redux 会对以下代码有所印象：
 
-```
+```javascript
 import {createStore, compose, applyMiddleware} from 'redux';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
@@ -18,7 +18,7 @@ const store = createStore(
 )
 ```
 
-```
+```javascript
 import {combineReducers} from 'redux-immutable';
 import {reducer as recommendReducer} from './xx/store/index';
 
@@ -37,7 +37,7 @@ export default combineReducer({
 
 createStore,顾名思义，是要创建一个仓库，是redux的核心所在，它最后要返回四个非常重要的属性，分别是 <b>getState、subscribe、dispatch、replaceReducer</b>。
 
-```
+```javascript
 export default function createStore(reducer, preloadedState, enhancer) {
   // ...
   return {
@@ -51,7 +51,7 @@ export default function createStore(reducer, preloadedState, enhancer) {
 
 进入createStore，第一步是检查参数，一共可以接收三个参数，reducer表示改变store数据的纯函数，preloadedState表示初始状态，第三个参数暂且不管，后面会提及到
 
-```
+```javascript
 export default function createStore(reducer, preloadedState, enhancer) {
   // reducer必须是函数
   // 当前 reducer
@@ -69,7 +69,7 @@ export default function createStore(reducer, preloadedState, enhancer) {
 
 首先看看它的 getState 方法：
 
-```
+```javascript
 function getState() {
   // 如果有dispatch正在执行则报错
   if(isDispatching) throw new Error('xxxx');
@@ -89,7 +89,7 @@ function getState() {
 
 subscribe方法如下定义：
 
-```
+```javascript
 function ensureCanMutateNextListeners() {
   // 如果 next 和 current 数组是一个引用，那这种情况是危险的
   // 原因上面已经谈到，我们需要 next 和 current 保持各自独立
@@ -127,7 +127,7 @@ function subscribe (listener) {
 
 接下来是 dispatch 函数：
 
-```
+```javascript
 function dispatch (action) {
   //action 必须是一个对象
   //action.type 不能为 undefined
@@ -154,7 +154,7 @@ function dispatch (action) {
 
 接下来是 replaceReducer：
 
-```
+```javascript
 function replaceReducer (nextReducer) {
   if (typeof nextReducer !== 'function') {
     throw new Error ('Expected the nextReducer to be a function.')
@@ -173,7 +173,7 @@ function replaceReducer (nextReducer) {
 
 还记得 combineReducer 的使用方式吗？
 
-```
+```javascript
 import {combineReducer} from 'redux-immutable';
 import {reducer as recommendReducer} from './xx/reducer/index';
 import {reducer as singReducer} from './xx/reducer/index';
@@ -186,7 +186,7 @@ export default combineReducer({
 
 combineReducer 用来组织不同模块的reducer，看下究竟是如何组织起来的。
 
-```
+```javascript
 export default function combineReducers (reducers) {
   // 以例子来讲，reducerKeys 就是 ['recommend', 'sing']
   const reducerKeys = Object.keys (reducers)
@@ -228,7 +228,7 @@ export default function combineReducers (reducers) {
 
 compose 其实是一个工具，充分体现了高阶函数的技巧。
 
-```
+```javascript
 export default function compose(...funcs) {
   if (funcs.length === 0) {
     return arg => arg
@@ -246,7 +246,7 @@ export default function compose(...funcs) {
 
 这个方法与中间件息息相关，这里直接解析不容易理解，结合上 redux-thunk 中间件为例，先看下 redux-thunk的源码
 
-```
+```javascript
 function createThunkMiddleware(extraArgument) {
   return ({dispatch, getState}) => next => action => {
     if (typeof action === 'function') {
@@ -262,7 +262,7 @@ export default thunk
 
 现在看下 applyMiddleware 的源码：
 
-```
+```javascript
 export default function applyMiddleware (...middlewares) {
   return createStore => (...args) => {
     const store = createStore (...args)
@@ -299,7 +299,7 @@ export default function applyMiddleware (...middlewares) {
 
 在上面还没提到的关于 createStore 的第三个参数，它是如何做判断的呢，接下来描述。先给出这部分的源码：
 
-```
+```javascript
 export default function createStore(reducer, preloadedState, enhancer) {
   // 第二个参数为函数，但是第三个参数没传
   if (
@@ -339,18 +339,5 @@ const store = createStore(reducer, applyMiddleware(thunk))
 ### 小结
 
 Redux 原理解读就这样了，其实理解它的源码并没有想象的复杂，最重要的还是将它的原理和使用结合起来，体会整个设计的思想，还是对自身有所帮助的。
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
