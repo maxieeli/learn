@@ -37,6 +37,10 @@
 + [React Hooks的使用详解](https://github.com/owenCoderLi/learn/blob/master/front-end/react/ReactHooks.md) 
 + [Redux以及中间件解析](https://github.com/owenCoderLi/learn/blob/master/front-end/react/Redux.md) 
 
+### TypeScript
+
++ [TypeScript使用汇总](https://github.com/owenCoderLi/learn/blob/master/front-end/typescript/basic.md)
++ [TypeScript部分进阶用法](https://github.com/owenCoderLi/learn/blob/master/front-end/typescript/advance.md)
 
 
 ## BACK-END(暂未更新)

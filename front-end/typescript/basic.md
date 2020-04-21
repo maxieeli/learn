@@ -12,7 +12,6 @@ TypeScript具有类型系统，且是JavaScript的超集，它可以编译成普
   + [函数](#function)
   + [泛型](#generic)
   + [枚举](#enum)
-  + [类型推论](#type)
   + [高级类型](#higher)
   + [模块](#module)
   + [命名空间](#namespace)
