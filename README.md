@@ -44,9 +44,9 @@
 
 ### 数据结构
 
-+ [栈]
-+ [队列和双端队列]
-+ [链表]
++ [栈](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/stack.md)
++ [队列和双端队列](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/queue.md)
++ [链表](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/linkedList.md)
 + [集合]
 + [字典和散列表]
 + [树]
