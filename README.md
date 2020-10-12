@@ -47,8 +47,9 @@
 + [栈](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/stack.md)
 + [队列和双端队列](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/queue.md)
 + [链表](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/linkedList.md)
-+ [集合]
-+ [字典和散列表]
-+ [树]
++ [集合](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/set.md)
++ [字典和散列表](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/dictionary.md)
++ [树](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/tree.md)
++ [二叉堆和堆排序](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/heap.md)
 
 ## BACK-END(暂未更新)
