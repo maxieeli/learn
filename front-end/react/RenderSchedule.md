@@ -8,7 +8,7 @@
 
 以下是阅读 React 源码的 流程：
 
-![readAll.png](https://i.loli.net/2020/03/10/DPeKbUhVsEWGYOC.png)
+![readAll.png](../../pic/readAll.png)
 
 
 
@@ -580,5 +580,5 @@ function workLoop(hasTimeRemaining, initialTime) {
 
 以上就是React调度机制的过程，用一个流程图表示该文章所述。
 
-![renderSchedule.png](https://i.loli.net/2020/03/09/wn7m6JtWiSzRsuM.png)
+![renderSchedule.png](../../pic/renderSchedule.png)
 

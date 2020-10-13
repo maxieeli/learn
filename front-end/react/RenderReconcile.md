@@ -8,7 +8,7 @@
 
 以下是阅读 React 源码的 流程：
 
-![readAll.png](https://i.loli.net/2020/03/10/DPeKbUhVsEWGYOC.png)
+![readAll.png](../../pic/readAll.png)
 
 
 
@@ -322,6 +322,6 @@ function completeUnitOfWork(unitOfWork) {
 
 以上就是组件在调和过程中的源码解析，用一个流程图来表示workLoop的运行机制
 
-![workLoop.png](https://i.loli.net/2020/03/09/3Ar5KkfMtQsZY7C.png)
+![workLoop.png](../../pic/workLoop.png)
 
 

@@ -36,7 +36,7 @@ console.log(person2.name); // javascript;
 
 
 
-![prototype1.png](https://i.loli.net/2020/02/23/cAQPDs9pHOdhauv.png)
+![prototype1.png](../../pic/prototype1.png)
 
 
 
@@ -59,7 +59,7 @@ console.log(person.__proto__ === Person.prototype); // true
 
 
 
-![prototype2.png](https://i.loli.net/2020/02/23/xfm9PMa8N1QAKYj.png)
+![prototype2.png](../../pic/prototype2.png)
 
 
 
@@ -80,7 +80,7 @@ console.log(Person === Person.prototype.constructor); // true
 
 
 
-![prototype3.png](https://i.loli.net/2020/02/23/f4UrX2WYGcxHNeR.png)
+![prototype3.png](../../pic/prototype3.png)
 
 
 
@@ -137,7 +137,7 @@ console.log(obj.name); // javascript
 
 
 
-![prototype4.png](https://i.loli.net/2020/02/23/zuhZlX4EApNPdkq.png)
+![prototype4.png](../../pic/prototype4.png)
 
 
 
@@ -156,7 +156,7 @@ console.log(Object.prototype.__proto__ === null); // true
 
 
 
-![prototype5.png](https://i.loli.net/2020/02/23/PSHdN1levbYLZxF.png)
+![prototype5.png](../../pic/prototype5.png)
 
 
 

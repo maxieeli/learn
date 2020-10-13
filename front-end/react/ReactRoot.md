@@ -8,7 +8,7 @@
 
 以下是阅读 React 源码的 流程：
 
-![readAll.png](https://i.loli.net/2020/03/10/DPeKbUhVsEWGYOC.png)
+![readAll.png](../../pic/readAll.png)
 
 
 
@@ -102,7 +102,7 @@ let ReactElement = function(type, key, ref, self, source, owner, props){
 
 以下是流程内容：
 
-![createElement.png](https://i.loli.net/2020/03/05/iURAyrXW8TBsx6p.png)
+![createElement.png](../../pic/createElement.png)
 
 
 
@@ -398,7 +398,7 @@ bookingKeeping 就是从对象池子里面取出来的东西，然后调用func�
 
 现在通过流程图描述清楚 mapChildren函数的过程。
 
-![reactchildren.png](https://i.loli.net/2020/03/05/qjxW3fY9mU2QLJd.png)
+![reactchildren.png](../../pic/reactchildren.png)
 
 
 

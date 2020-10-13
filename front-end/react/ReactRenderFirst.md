@@ -8,7 +8,7 @@
 
 以下是阅读 React 源码的 流程：
 
-![readAll.png](https://i.loli.net/2020/03/10/DPeKbUhVsEWGYOC.png)
+![readAll.png](../../pic/readAll.png)
 
 
 
@@ -179,7 +179,7 @@ ReactDOM.render(<App />, document.querySelector('#root'))
 
 假设需要渲染出以上组件，则它们对应的 fiber 树长这样：
 
-![renderRoot.png](https://i.loli.net/2020/03/05/FahIgVExksMzfYy.png)
+![renderRoot.png](../../pic/renderRoot.png)
 
 
 
@@ -205,5 +205,5 @@ const fiber = document.querySelector('#root')._reactRootContainer._internalRoot;
 
 以上就是本文的所有内容了，最后用图的形式总结一下该篇的内容。
 
-![renderFirst.png](https://i.loli.net/2020/03/05/KZdoius5r2CyJax.png)
+![renderFirst.png](../../pic/renderFirst.png)
 

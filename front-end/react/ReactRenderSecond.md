@@ -8,7 +8,7 @@
 
 以下是阅读 React 源码的 流程：
 
-![readAll.png](https://i.loli.net/2020/03/10/DPeKbUhVsEWGYOC.png)
+![readAll.png](../../pic/readAll.png)
 
 
 
@@ -259,6 +259,6 @@ function createUpdate(expirationTime, suspenseConfig) {
 
 以上就是本文的全部内容，本文的核心还是放在了计算时间上，因为这个时间和后面的调度息息相关，最后通过一个流程图总结render流程：
 
-![renderSecond.png](https://i.loli.net/2020/03/05/2o9HSBUMjecDKrs.png)
+![renderSecond.png](../../pic/renderSecond.png)
 
 
