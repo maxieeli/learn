@@ -52,4 +52,9 @@
 + [树](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/tree.md)
 + [二叉堆和堆排序](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/heap.md)
 
+### 算法
+
++ [排序算法](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/sort.md)
++ [搜索算法](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/search.md)
+
 ## BACK-END(暂未更新)
