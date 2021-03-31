@@ -160,6 +160,28 @@ function partition(array, left, right, compareFn) {
   }
   return i
 }
+
+// 另外一种方式
+const quickSort = (array) => {
+  if(array.length <= 1) {
+    return array;
+  }
+  let centerValue = array[0]; // 比较的数，取数组第一个
+  array.shift(); // 将数组的第一项排除出去
+  let leftArray = []; // 左侧较小数组
+  let rightArray = []; // 右侧较大数组
+  let arrLength = array.length;
+  for(let i = 0; i < arrLength; i++) {
+    if(array[i] <= centerValue) {
+      leftArray.push(array[i]);
+    } else {
+      rightArray.push(array[i]);
+    }
+  }
+  let leftSortResult = quickSort(leftArray);
+  let rightSortResult = quickSort(rightArray);
+  return leftSortResult.concat(centerValue, rightSortResult);
+}
 ```
 
 ### 1.6. 计数排序

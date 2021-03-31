@@ -16,6 +16,9 @@
 + [EC6汇总](https://github.com/owenCoderLi/learn/blob/master/front-end/javascript/ES6.md) 
 + [JavaScript数组使用汇总](https://github.com/owenCoderLi/learn/blob/master/front-end/javascript/array.md) 
 
+### CSS动画
+
++ [模仿iphone12页面卷动逐行滑入效果](https://github.com/owenCoderLi/learn/blob/master/front-end/css/iphone12.md)
 
 
 ### Webpack

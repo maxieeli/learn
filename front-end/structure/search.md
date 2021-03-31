@@ -59,7 +59,7 @@ function binarySearch(array, value, compareFn = defaultCompare) {
   const sortedArray = quickSort(array)
   let low = 0
   let high = sortedArray.length - 1
-  while(lesserOrEquals(low, high, compareFn) { // 得到中间项索引并取得中间值
+  while(lesserOrEquals(low, high, compareFn)) { // 得到中间项索引并取得中间值
     const mid = Math.floor((low + high) / 2)
     const element = sortedArray[mid]
     if(compareFn(element, value) === Compare.LESS_THAN) { //比较中项值和搜索值
