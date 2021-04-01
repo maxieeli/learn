@@ -47,17 +47,18 @@
 
 ### 数据结构
 
-+ [栈](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/stack.md)
-+ [队列和双端队列](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/queue.md)
-+ [链表](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/linkedList.md)
-+ [集合](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/set.md)
-+ [字典和散列表](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/dictionary.md)
-+ [树](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/tree.md)
-+ [二叉堆和堆排序](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/heap.md)
++ [栈](https://github.com/owenCoderLi/learn/blob/master/algorithms/stack.md)
++ [队列和双端队列](https://github.com/owenCoderLi/learn/blob/master/algorithms/queue.md)
++ [链表](https://github.com/owenCoderLi/learn/blob/master/algorithms/linkedList.md)
++ [集合](https://github.com/owenCoderLi/learn/blob/master/algorithms/set.md)
++ [字典和散列表](https://github.com/owenCoderLi/learn/blob/master/algorithms/dictionary.md)
++ [树](https://github.com/owenCoderLi/learn/blob/master/algorithms/tree.md)
++ [二叉堆和堆排序](https://github.com/owenCoderLi/learn/blob/master/algorithms/heap.md)
 
 ### 算法
 
-+ [排序算法](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/sort.md)
-+ [搜索算法](https://github.com/owenCoderLi/learn/blob/master/front-end/structure/search.md)
++ [排序算法](https://github.com/owenCoderLi/learn/blob/master/algorithms/sort.md)
++ [搜索算法](https://github.com/owenCoderLi/learn/blob/master/algorithms/search.md)
++ [动态规划算法](https://github.com/owenCoderLi/learn/blob/master/algorithms/dynamic.md)
 
-## BACK-END(暂未更新)
+## BACK-END(Java为主, 暂未更新)
