@@ -47,13 +47,13 @@
 
 ### 数据结构
 
-+ [栈](https://github.com/owenCoderLi/learn/blob/master/algorithms/stack.md)
-+ [队列和双端队列](https://github.com/owenCoderLi/learn/blob/master/algorithms/queue.md)
-+ [链表](https://github.com/owenCoderLi/learn/blob/master/algorithms/linkedList.md)
-+ [集合](https://github.com/owenCoderLi/learn/blob/master/algorithms/set.md)
-+ [字典和散列表](https://github.com/owenCoderLi/learn/blob/master/algorithms/dictionary.md)
-+ [树](https://github.com/owenCoderLi/learn/blob/master/algorithms/tree.md)
-+ [二叉堆和堆排序](https://github.com/owenCoderLi/learn/blob/master/algorithms/heap.md)
++ [栈](https://github.com/owenCoderLi/learn/blob/master/data-structure/stack.md)
++ [队列和双端队列](https://github.com/owenCoderLi/learn/blob/master/data-structure/queue.md)
++ [链表](https://github.com/owenCoderLi/learn/blob/master/data-structure/linkedList.md)
++ [集合](https://github.com/owenCoderLi/learn/blob/master/data-structure/set.md)
++ [字典和散列表](https://github.com/owenCoderLi/learn/blob/master/data-structure/dictionary.md)
++ [树](https://github.com/owenCoderLi/learn/blob/master/data-structure/tree.md)
++ [二叉堆和堆排序](https://github.com/owenCoderLi/learn/blob/master/data-structure/heap.md)
 
 ### 算法
 
