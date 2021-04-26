@@ -55,27 +55,23 @@ function sequentialSearch(array, value, equalsFn = defaultEquals) {
 * 如果待搜索值比选中值小，返回步骤1并在选中值右边的子数组中寻找
 
 ```javascript
-function binarySearch(array, value, compareFn = defaultCompare) {
-  const sortedArray = quickSort(array)
-  let low = 0
-  let high = sortedArray.length - 1
-  while(lesserOrEquals(low, high, compareFn)) { // 得到中间项索引并取得中间值
-    const mid = Math.floor((low + high) / 2)
-    const element = sortedArray[mid]
-    if(compareFn(element, value) === Compare.LESS_THAN) { //比较中项值和搜索值
-      low = mid + 1
-    } else if(compareFn(element, value) === Compare.BIGGER_THAN) {
-      high = mid - 1
-    } else {
-      return mid
-    }
-  }
-  return DOES_NOT_EXIST
-}
 
-function lesserOrEquals(a, b, compareFn) {
-  const comp = compareFn(a, b)
-  return comp === Compare.LESS_THAN || comp === Compare.EQUALS
+// 结束递归的条件
+// 1. 找到就结束递归
+// 2. 递归完整个数组，仍然没有找到findVal，也需要结束递归
+function binarySearch(arr, left, right, findVal) {
+  if(left > right) {
+    return -1;
+  }
+  let mid = Math.floor((left + right) / 2);
+  let midVal = arr[mid];
+  if(findVal > midVal) {
+    return binarySearch(arr, mid + 1, right, findVal);
+  } else if(findVal < midVal) {
+    return binarySearch(arr, left, mid - 1, findVal);
+  } else {
+    return mid;
+  }
 }
 ```
 

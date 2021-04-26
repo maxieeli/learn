@@ -6,18 +6,31 @@
 
 首部字段名  | 描述
 ------------  | -------------
-Accept  |  告诉服务器，客户端支持的数据类型
-Accept-Charset  |  告诉服务器，客户端采用的编码
-Accept-Encoding  |  告诉服务器，客户机支持的数据压缩格式
-Accept-Language  |  告诉服务器，客户机的语言环境
-Host  |  客户机通过这个信息告诉服务器，相访问的主机名
-If-Mondified-Since  |   客户机通过这个信息告诉服务器，资源缓存的时间
-Referer  |   客户机通过这个信息告诉服务器，它是从哪个资源来访问服务器
-User-Agent  |   客户机通过这个信息告诉服务器，客户机的软件环境
-Cookie  |   客户机通过这个信息告诉服务器，可以向服务器带数据
-Connection  |   客户机通过这个信息告诉服务器，请求完后是关闭还是保持连接
-Date  |   客户机通过这个信息告诉服务器，客户机当前请求的时间
-
+`Accept`  |  告诉服务器，客户端支持的数据类型
+`Age`  |  header包含的对象一直在代理缓存的时间
+`Accept-Charset`  |  请求的HTTP标头通告字符集客户端能理解,使用内容协商,服务器然后选择一个提议,使用它并在Content-Type响应头中通知客户它选择的内容。
+`Accept-Encoding`  |  告诉服务器，客户机支持的数据压缩格式，通常是一个压缩算法中,客户端是能够理解的,使用内容协商,服务器选择其中一个提议并使用它.
+`Accept-Language`  |  请求的HTTP标头通告哪些语言客户端是能够理解,并且其区域的变体是优选的。
+`Accept-Ranges`  |  响应的HTTP标头是由服务器使用以通告其支持部分请求的标志物,此字段的值表示可用于定义范围的单位。
+`Access-Control-Request-Headers`  |  发出请求时报头用于预检请求让服务器知道哪些HTTP头的实际请求时将被调用。
+`Access-Control-Request-Method`  |  发出请求时报头用于预检请求让服务器知道哪些HTTP头的实际请求时将被使用。
+`Access-Control-Allow-Origin`  |  响应header指示是否该响应可以与具有给定资源共享原点(<origin> / *)
+`Access-Control-Allow-Credentials`  |  响应报头指示请求的响应是否可以暴露于该页面,凭证是Cookie(跨域时是否携带cookie,若设置成true，origin必须设置成指定地址,不能为*)
+`Access-Control-Allow-Headers`  |  响应报头在响应用于一个预检请求指示哪个HTTP标头可以通过。如果请求具有标头,此标头是必需的 `Access-Control-Request-Headers`
+`Access-Control-Allow-Methods`  |  响应标头指定响应访问所述资源到时允许的一种或多种方法预检请求。
+`Access-Control-Expose-Headers`  |  响应报头指示哪些报头可以公开为通过列出它们名字响应的一部分。
+`Access-Control-Max-Age`  |  响应header指示多长时间的结果预检请求可以被缓存.
+`Authorization`  |  请求标头包含用于向服务器认证用户代理的凭证，通常在服务器响应401 `Unauthorized`状态和`WWW-Authenticate`标题后。
+`Cache-Control`  |  通用头字段用于指定在两个，请求和响应的缓存机制的指令。缓存指令是单向的，这意味着请求中的给定指令并不意味着将在响应中给出相同的指令.
+`Content-Encoding: gzip`  |  告诉客户端，应该采用gzip对资源进行解码
+`Connection: keep-alive`  |  告诉客户端服务器的tcp连接也是一个长连接
+`Cookie`  |   客户机通过这个信息告诉服务器，可以向服务器带数据
+`Date`  |   客户机通过这个信息告诉服务器，客户机当前请求的时间
+`Etag`  |   HTTP 响应报头为资源的特定版本的标识符。它允许缓存更高效，并节省带宽，因为如果内容没有改变，Web 服务器不需要发送完整的响应。另一方面，如果内容发生了变化，etags 有助于防止资源的同时更新互相覆盖
+`Host`  |  客户机通过这个信息告诉服务器，相访问的主机名
+`If-Mondified-Since`  |   客户机通过这个信息告诉服务器，资源缓存的时间
+`Referer`  |   客户机通过这个信息告诉服务器，它是从哪个资源来访问服务器
+`User-Agent`  |   客户机通过这个信息告诉服务器，客户机的软件环境
 
 
 #### 2. Request Header
@@ -45,12 +58,67 @@ Response Header  |  描述
 `Date: Mon, 1 Mar 2020 02:50:55 GMT`  |  服务端发送资源时的服务器时间
 `Expires: Wed, 31 Dec 1969 23:59:59 GMT`  |  比较过时的一种验证缓存的方式，与浏览器的时间比较，超过这个时间就不用缓存(不和服务器进行验证)
 `Cache-Control: no-cache`  |  控制缓存的方式，会和服务器进行缓存校验
-`etag: "fb8ba2f80b1d324bb997cbe188f28187-ssl-df"`  |  一般是Nginx静态服务器发来的静态文件签名，浏览在没有 'Disabled cache' 情况下，接收到etag后，同一个url第二次请求就会自动带上 'If-None-Match'
+`etag: "fb8ba2f80b1d38f28187-ssl-df"`  |  一般是Nginx静态服务器发来的静态文件签名，浏览在没有 'Disabled cache' 情况下，接收到etag后，同一个url第二次请求就会自动带上 'If-None-Match'
 `Last-Modified: Fri, 27 Jul 2019 11:04:55 GMT`  |  服务器发来的当前资源最后一次修改的时间，下次请求时，如果服务器上当前资源的修改时间大于这个时间，就返回新的资源内容
 `Content-Type: text/html; charset=utf-8`  |  如果返回的是流式的数据，我们就必须告诉浏览器这个头，不然浏览器就会下载这个页面，同时告诉浏览器是utf8解码，否则可能出现乱码
-`Content-Encoding: gzip`  |  告诉客户端，应该采用gzip对资源进行解码
-`Connection: keep-alive`  |  告诉客户端服务器的tcp连接也是一个长连接
 
+
+#### 关于Cache-Control
+
+缓存请求指令，客户端可以在HTTP响应中的标准指令:
+
+```bash
+    Cache-Control: max-age=<seconds>
+    Cache-Control: max-stale[=<seconds>]
+    Cache-Control: min-fresh=<seconds>
+    Cache-Control: no-cache 
+    Cache-Control: no-store
+    Cache-Control: no-transform
+    Cache-Control: only-if-cached
+```
+
+
+缓存响应指令，服务器可以在HTTP响应中的标准指令:
+
+```bash
+    Cache-Control: must-revalidate
+    Cache-Control: no-cache
+    Cache-Control: no-store
+    Cache-Control: no-transform
+    Cache-Control: public
+    Cache-Control: private
+    Cache-Control: proxy-revalidate
+    Cache-Control: max-age=<seconds>
+    Cache-Control: s-maxage=<seconds>
+```
+
+指令
+
++ public: 指示响应可能被任何缓存缓存
++ private: 指示该响应时针对单个用户，且不能由共享缓存存储，私有缓存可以存储该响应
++ no-cache: 在释放缓存副本之前，强制高速缓存将请求提交给原始服务器进行验证
++ only-if-cached: 表示不检索新数据，客户端只希望获得缓存的响应。且不应该联系原始服务器以查看是否存在新副本。
++ max-age=<seconds>: 指定资源被视为新鲜的最长时间,相反Expires,该指令相对于请求的时间而言的。
++ s-maxage=<seconds>: 覆盖max-age，只适用于共享缓存并被私有缓存忽略。
++ max-stale=[<second>]: 表示客户愿意接受超过其到期时间的响应。或者，您可以以秒为单位指定一个值，指示响应不能过期的时间。
++ min-fresh=<seconds>: 表示客户想要的响应至少在指定的秒数内仍然是新鲜的。
++ stale-while-revalidate=<second>: 指示客户端愿意接受陈旧的响应，同时在后台异步检查新的响应。秒值指示客户愿意接受陈旧响应的时间。
++ must-revalidate: 缓存必须在使用前验证陈旧资源的状态，不应使用过期资源。与之proxy-revalidate相同must-revalidate，但它仅适用于共享缓存(代理)并被私有缓存忽略。
++ immutable: 表示响应主体不会随着时间而改变。资源如果未到期，则在服务器上保持不变，因此，即使用户明确刷新页面，客户端也不应为其发送条件重新验证以检查更新。根据 HTTP 规范，不知道这个扩展的客户端必须忽略它们。
++ no-store: 缓存不应该存储有关客户端请求或服务器响应的任何内容。
++ no-transform: 不应该对资源进行转换或转换。Content-Encoding ，Content-Range ，Content-Type 标头不得被代理修改。例如，一个不透明的代理可能会在图像格式之间进行转换，以节省缓存空间或减少慢速链接上的流量
+
+防止缓存
+
+```javascript
+Cache-Control: no-cache, no-store, must-revalidate
+```
+
+缓存静态资产
+
+```javascript
+Cache-Control: public, max-age=31536000
+```
 
 
 ### Cookie 与 Session
